@@ -1,0 +1,28 @@
+<!-- Data: 15/02/2025
+ Considere a imagem 'Bandeiras', localizada na 
+pasta 'arquivos' do Teams. Crie áreas clicáveis 
+(mapa de imagem) nas regiões que correspondem 
+às bandeiras dos países da América Latina. Quando 
+o usuário clicar em uma dessas bandeiras, ele 
+deverá ser redirecionado para uma página que 
+contenha informações sobre o respectivo país.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <img src="Bandeiras.jpg" usemap="#image-map">
+
+    <map name="image-map">
+        <area target="_blank" alt="Brasil" title="Brasil" href="https://pt.wikipedia.org/wiki/Brasil" coords="159,129,33,45" shape="rect">
+        <area target="" alt="México" title="México" href="https://pt.wikipedia.org/wiki/M%C3%A9xico" coords="39,168,147,248" shape="rect">
+        <area target="" alt="Uruguai" title="Uruguai" href="https://pt.wikipedia.org/wiki/Uruguai" coords="286,254,169,177" shape="rect">
+        <area target="" alt="Argentina" title="Argentina" href="https://pt.wikipedia.org/wiki/Argentina" coords="307,177,424,251" shape="rect">
+        <area target="" alt="Paraguai" title="Paraguai" href="https://pt.wikipedia.org/wiki/Paraguai" coords="578,412,693,481" shape="rect">
+    </map>
+</body>
+</html>

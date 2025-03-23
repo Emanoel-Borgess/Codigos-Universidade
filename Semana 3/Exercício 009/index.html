@@ -1,0 +1,72 @@
+<!-- Data: 14/02/2025
+ Crie uma página HTML com a seguinte tabela.
+  Use CSS para estilizar a tabela, garantindo que as 
+cores e o estilo sejam o mais próximo possível do 
+modelo fornecido.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        th {
+            background-color: darkblue;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #d0e7ff;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    </style>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Base de cálculo mensal em R$</th>
+            <th>Alíquota %</th>
+            <th>Parcela a deduzir do imposto em R$</th>
+        </tr>
+        <tr>
+            <td>Até 1.903,98</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>De 1.903,99 até 2.826,65</td>
+            <td>7,5</td>
+            <td>142,80</td>
+        </tr>
+        <tr>
+            <td>De 2.826,66 até 3.751,05</td>
+            <td>15</td>
+            <td>354,80</td>
+        </tr>
+        <tr>
+            <td>De 3.751,06 até 4.664,68</td>
+            <td>22,5</td>
+            <td>636,13</td>
+        </tr>
+        <tr>
+            <td>Acima de 4.664,68</td>
+            <td>27,5</td>
+            <td>869,36</td>
+        </tr>
+    </table>
+</body>
+</html>

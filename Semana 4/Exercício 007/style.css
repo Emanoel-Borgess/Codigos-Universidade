@@ -1,0 +1,12 @@
+p.texto1{
+    text-decoration: underline;
+}
+
+p.texto2{
+    text-indent: 50px;
+    text-decoration: overline;
+}
+
+p.texto3{
+    text-decoration: line-through;
+}

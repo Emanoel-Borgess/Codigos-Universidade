@@ -1,0 +1,15 @@
+p{
+    background-color: blueviolet;
+    font-size: medium;
+    font-family:'Courier New', Courier, monospace; 
+ }
+ p1{
+    background-color: rgb(58, 226, 43);
+    font-size: larger;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+ }
+ p2{
+    background-color: rgb(226, 128, 43);
+    font-size: small;
+    font-family:'Times New Roman', Times, serif; 
+ }

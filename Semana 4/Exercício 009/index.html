@@ -1,0 +1,25 @@
+<!-- Data: 15/02/2025
+Considere a imagem 'Imagem_Patos', localizada na 
+pasta 'arquivos' do Teams. Crie áreas clicáveis 
+(mapa de imagem), por meio da forma poly, nas 
+regiões que correspondem às imagens dos patos. 
+Quando o usuário clicar em um desses patos, ele 
+deverá ser redirecionado para uma página que 
+contenha informações sobre eles.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="Imagem_Patos.jpg" usemap="#image-map">
+
+
+    <map name="image-map">
+        <area target="_blank" alt="pato" title="pato" href="https://pt.wikipedia.org/wiki/Pato" coords="280,322,262,344,243,357,246,362,274,357,284,370,279,384,251,409,257,450,334,457,364,454,373,468,450,473,477,457,480,423,502,408,470,397,426,392,421,366,421,334,409,316,390,320,389,338,385,350,371,363,398,357,400,370,384,396,374,407,355,388,328,388,312,386,316,343,301,323"shape="poly">
+    </map>
+</body>
+</html>

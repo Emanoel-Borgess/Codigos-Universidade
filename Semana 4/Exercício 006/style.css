@@ -1,0 +1,9 @@
+p.direita{
+    text-align: left;
+}
+p.centro{
+    text-align: center;
+}
+p.esquerda{
+    text-align: right;
+}

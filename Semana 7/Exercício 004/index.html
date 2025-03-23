@@ -1,0 +1,25 @@
+<!-- Data: 24/02/2025
+ Crie uma página HTML onde o usuário entrará com o seu 
+salário bruto. Imprima o valor da alíquota do imposto de renda:
+  Salário menor que R$ 1903,99               -> Isento
+  Salário >= R$ 1903,99 e < R$ 2826,66  -> 7,5% do salário bruto
+  Salário >= R$ 2826,66 e < R$ 3751,06  -> 15% do salário bruto
+  Salário >= R$ 3751,06 e < R$ 4664,69  -> 22,5% do salário bruto
+  Salário >= R$ 4664,69                            -> 27,5% do salário bruto. -->
+
+ <!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+ </head>
+ <body>
+    <script src="script.js"></script>
+
+    <h2>Calculadora de Imposto de Renda</h2>
+    <label>Salário Bruto: <input type="number" id="salario" step="0.01"></label>
+    <button onclick="calcularImposto()">Calcular Alíquota</button>
+    <p id="resultado"></p>
+ </body>
+ </html>
