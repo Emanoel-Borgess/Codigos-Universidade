@@ -1,0 +1,66 @@
+<!-- Data: 26/03/2025
+Crie uma página HTML e adicione três divs. 
+ A primeira div deve ter bordas levemente 
+arredondadas.
+  A segunda div deve ter bordas completamente 
+arredondadas.
+  A terceira deve ter bordas circulares.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Importa o CSS do Bootstrap -->
+</head>
+<body>
+    <div class="container my-4"> 
+        <!-- container: Cria um container centralizado e responsivo -->
+        <!-- my-4: Adiciona margem vertical (topo e base) de 4 unidades do Bootstrap -->
+    
+        <div class="row"> 
+            <!-- row: Cria uma linha para organizar os elementos dentro do grid do Bootstrap -->
+    
+            <div class="col-md-4"> 
+                <!-- col-md-4: Define que essa coluna ocupará 4 das 12 colunas disponíveis no grid para telas médias (≥768px) e maiores -->
+    
+                <div class="p-4 border rounded"> 
+                    <!-- p-4: Adiciona um padding (espaçamento interno) de 4 unidades -->
+                    <!-- border: Adiciona uma borda ao redor da div -->
+                    <!-- rounded: Aplica cantos levemente arredondados à borda -->
+                    Levemente arredondada
+                </div>
+            </div>
+    
+            <div class="col-md-4"> 
+                <!-- Outra coluna de tamanho 4 no grid do Bootstrap -->
+    
+                <div class="p-4 border rounded-5"> 
+                    <!-- p-4: Padding interno de 4 unidades -->
+                    <!-- border: Adiciona uma borda ao redor da div -->
+                    <!-- rounded-5: Aplica um arredondamento maior aos cantos da borda -->
+                    Completamente arredondada
+                </div>
+            </div>
+    
+            <div class="col-md-4"> 
+                <!-- Última coluna de tamanho 4 no grid -->
+    
+                <div class="p-4 border rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;"> 
+                    <!-- p-4: Padding interno de 4 unidades -->
+                    <!-- border: Adiciona uma borda à div -->
+                    <!-- rounded-circle: Faz com que a div tenha bordas completamente arredondadas, tornando-a um círculo -->
+                    <!-- d-flex: Ativa o flexbox para facilitar o alinhamento dos elementos dentro da div -->
+                    <!-- align-items-center: Centraliza os itens verticalmente dentro do flex container -->
+                    <!-- justify-content-center: Centraliza os itens horizontalmente -->
+                    <!-- style="width: 100px; height: 100px;": Define largura e altura fixas para garantir a forma circular -->
+                    Circular
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Importa o JavaScript do Bootstrap -->
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!-- Data: 26/03/2025
+Crie uma página HTML com 8 divs e inclua conteúdo em 
+todas as divs. Para cada div, aplique as seguintes configurações 
+de margin e padding:
+  Div 1: Margin de 1rem e padding de 0.5rem em todos os lados.
+  Div 2: Margin vertical de 1.5rem e padding horizontal de 1rem.
+  Div 3: Margin superior de 3rem e padding inferior de 1.5rem.
+  Div 4: Margin inferior de 0.25rem e padding superior de 3rem.
+  Div 5: Margin à esquerda de 1.5rem e padding à direita de 
+0.5rem.
+  Div 6: Margin à direita de 1rem e padding à esquerda de 3rem.
+  Div 7: Margin horizontal de 0.5rem e padding vertical de 0.25rem.
+  Div 8: Margin auto para centralização e padding de 3rem em todos os lados.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Importa o CSS do Bootstrap -->
+</head>
+<body>
+    <div class="container my-4"> 
+        <!-- container: Define um container responsivo para alinhar e centralizar os elementos -->
+        <!-- my-4: Adiciona margem vertical (topo e base) de 4 unidades -->
+    
+        <div class="mb-3 p-2 border bg-light" style="margin: 1rem; padding: 0.5rem;"> 
+            <!-- mb-3: Adiciona uma margem inferior de 3 unidades -->
+            <!-- p-2: Adiciona um padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda ao redor da div -->
+            <!-- bg-light: Define o fundo da div como um tom claro -->
+            <!-- style="margin: 1rem;": Adiciona uma margem de 1rem em todos os lados -->
+            <!-- style="padding: 0.5rem;": Adiciona um espaçamento interno de 0.5rem -->
+            Div 1
+        </div>  
+    
+        <div class="mb-3 p-2 border bg-light" style="margin: 1.5rem 0; padding: 0 1rem;">
+            <!-- mb-3: Margem inferior de 3 unidades -->
+            <!-- p-2: Padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda -->
+            <!-- bg-light: Define o fundo como claro -->
+            <!-- style="margin: 1.5rem 0;": Define uma margem vertical (superior e inferior) de 1.5rem e nenhuma margem horizontal -->
+            <!-- style="padding: 0 1rem;": Define padding horizontal de 1rem e nenhum padding vertical -->
+            Div 2
+        </div>
+    
+        <div class="mb-3 p-2 border bg-light" style="margin-top: 3rem; padding-bottom: 1.5rem;">
+            <!-- mb-3: Margem inferior de 3 unidades -->
+            <!-- p-2: Padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda -->
+            <!-- bg-light: Define um fundo claro -->
+            <!-- style="margin-top: 3rem;": Adiciona uma margem superior de 3rem -->
+            <!-- style="padding-bottom: 1.5rem;": Adiciona um espaçamento inferior de 1.5rem -->
+            Div 3
+        </div>
+    
+        <div class="mb-3 p-2 border bg-light" style="margin-bottom: 0.25rem; padding-top: 3rem;">
+            <!-- mb-3: Margem inferior de 3 unidades -->
+            <!-- p-2: Padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda -->
+            <!-- bg-light: Define um fundo claro -->
+            <!-- style="margin-bottom: 0.25rem;": Define uma margem inferior de 0.25rem -->
+            <!-- style="padding-top: 3rem;": Adiciona um espaçamento superior de 3rem -->
+            Div 4
+        </div>
+    
+        <div class="mb-3 p-2 border bg-light" style="margin-left: 1.5rem; padding-right: 0.5rem;">
+            <!-- mb-3: Margem inferior de 3 unidades -->
+            <!-- p-2: Padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda -->
+            <!-- bg-light: Define um fundo claro -->
+            <!-- style="margin-left: 1.5rem;": Adiciona uma margem à esquerda de 1.5rem -->
+            <!-- style="padding-right: 0.5rem;": Adiciona um espaçamento interno à direita de 0.5rem -->
+            Div 5
+        </div>
+    
+        <div class="mb-3 p-2 border bg-light" style="margin-right: 1rem; padding-left: 3rem;">
+            <!-- mb-3: Margem inferior de 3 unidades -->
+            <!-- p-2: Padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda -->
+            <!-- bg-light: Define um fundo claro -->
+            <!-- style="margin-right: 1rem;": Define uma margem à direita de 1rem -->
+            <!-- style="padding-left: 3rem;": Define um espaçamento interno à esquerda de 3rem -->
+            Div 6
+        </div>
+    
+        <div class="mb-3 p-2 border bg-light" style="margin: 0 0.5rem; padding: 0.25rem 0;">
+            <!-- mb-3: Margem inferior de 3 unidades -->
+            <!-- p-2: Padding interno de 2 unidades -->
+            <!-- border: Adiciona uma borda -->
+            <!-- bg-light: Define um fundo claro -->
+            <!-- style="margin: 0 0.5rem;": Define margem horizontal de 0.5rem e nenhuma margem vertical -->
+            <!-- style="padding: 0.25rem 0;": Define padding vertical de 0.25rem e nenhum padding horizontal -->
+            Div 7
+        </div>
+    
+        <div class="m-auto p-5 border bg-light text-center" style="max-width: 300px;">
+            <!-- m-auto: Define margens automáticas para centralizar a div horizontalmente -->
+            <!-- p-5: Define um espaçamento interno (padding) de 5 unidades -->
+            <!-- border: Adiciona uma borda ao redor da div -->
+            <!-- bg-light: Define um fundo claro -->
+            <!-- text-center: Centraliza o texto dentro da div -->
+            <!-- style="max-width: 300px;": Define uma largura máxima de 300px para limitar o tamanho da div -->
+            Div 8
+        </div>
+    </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Importa o JavaScript do Bootstrap -->
+</body>
+</html>
