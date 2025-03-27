@@ -1,0 +1,75 @@
+<!-- Data: 26/03/2025
+Crie uma galeria de imagens com 6 fotos. Use a 
+classe .img-thumbnail para miniaturas e .rounded-circle 
+para transformar pelo menos duas imagens em 
+círculos. Organize as imagens em uma grade usando 
+o sistema de grid do Bootstrap. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Define o idioma da página como português do Brasil -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres para suportar acentos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Garante que a página seja responsiva e se adapte a diferentes tamanhos de tela -->
+
+    <title>Exercício 02</title>
+    <!-- Define o título da aba do navegador -->
+
+    <!-- Importa o CSS do Bootstrap para facilitar a estilização e o layout da página -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Container fluido que ocupa toda a largura da tela -->
+    <div class="container-fluid">
+      <!-- Row (linha) para organizar as colunas -->
+      <div class="row">
+        <!-- Cada div col-md-4 define uma coluna que ocupa 4/12 do espaço em telas médias ou maiores -->
+
+        <div class="col-md-4">
+          <img src="rede.png" class="img-thumbnail" alt="Imagem" />
+          <!-- img-thumbnail: Aplica um estilo de miniatura à imagem, adicionando uma borda e um padding -->
+        </div>
+
+        <div class="col-md-4">
+          <img
+            src="gato.jpg"
+            class="img-thumbnail rounded-circle"
+            alt="Imagem"
+          />
+          <!-- rounded-circle: Transforma a imagem em um círculo -->
+        </div>
+
+        <div class="col-md-4">
+          <img src="abobora.png" class="img-thumbnail" alt="Imagem" />
+        </div>
+
+        <div class="col-md-4">
+          <img
+            src="menino.jpg"
+            class="img-thumbnail rounded-circle"
+            alt="Imagem"
+          />
+          <!-- Outra imagem transformada em círculo -->
+        </div>
+
+        <div class="col-md-4">
+          <img src="pato.jpg" class="img-thumbnail" alt="Imagem" />
+        </div>
+
+        <div class="col-md-4">
+          <img src="sapo.jpg" class="img-thumbnail" alt="Imagem" />
+        </div>
+      </div>
+      <!-- Fim da linha -->
+    </div>
+    <!-- Fim do container -->
+
+    <!-- Importa o JavaScript do Bootstrap para funcionalidades interativas -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

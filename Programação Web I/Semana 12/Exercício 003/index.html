@@ -1,0 +1,58 @@
+<!-- Data: 26/03/2025
+Crie uma seção com uma imagem responsiva (.img-fluid) 
+e um texto ao lado. Use .float-start ou .float-end 
+para alinhar a imagem à esquerda ou direita do texto.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Define o idioma da página como português do Brasil -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres para suportar acentos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Garante que a página seja responsiva em dispositivos móveis -->
+
+    <title>Exercício 03</title>
+    <!-- Define o título da aba do navegador -->
+
+    <!-- Importa o CSS do Bootstrap para estilização -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <!-- container: Define um espaço centralizado e responsivo para o conteúdo -->
+      <!-- mt-4: Adiciona uma margem superior para espaçamento -->
+
+      <div class="clearfix">
+        <!-- clearfix: Garante que os elementos flutuantes dentro da div não saiam do fluxo normal do layout -->
+
+        <img
+          src="cachorro.jpg"
+          class="img-fluid float-start me-3"
+          alt="Imagem"
+        />
+        <!-- img-fluid: Faz com que a imagem seja responsiva e se ajuste ao tamanho do container -->
+        <!-- float-start: Faz a imagem flutuar à esquerda -->
+        <!-- me-3: Adiciona uma margem à direita da imagem para separá-la do texto -->
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+          odio. Praesent libero. Sed cursus ante dapibus diam. Nulla quis sem at
+          nibh elementum imperdiet. Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Tenetur fugit earum consectetur dolorem at
+          blanditiis autem dolor, ipsum iusto facilis, incidunt laborum saepe
+          cum quos aspernatur maiores? Accusantium, molestiae quas.
+        </p>
+      </div>
+      <!-- Fim da div clearfix -->
+    </div>
+    <!-- Fim do container -->
+
+    <!-- Importa o JavaScript do Bootstrap para funcionalidades interativas -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

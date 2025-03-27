@@ -1,0 +1,82 @@
+<!-- Data: 26/03/2025
+Crie uma página de produtos que inclua:
+  Uma tabela com produtos (Nome, Preço, Estoque).
+  Imagens dos produtos com bordas arredondadas (.rounded).
+  Botões para "Adicionar ao Carrinho" (.btn-primary) e "Ver Detalhes" (.btn-info). -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Define o idioma da página como português do Brasil -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres para suportar acentos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Ajusta a página para ser responsiva em diferentes dispositivos -->
+
+    <title>Exercício 06</title>
+    <!-- Define o título da página -->
+
+    <!-- Importa o CSS do Bootstrap para estilização -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <!-- container: Cria um contêiner centralizado e responsivo -->
+      <!-- mt-4: Adiciona margem superior para espaçamento -->
+
+      <table class="table table-bordered">
+        <!-- table: Define uma tabela -->
+        <!-- table-bordered: Adiciona bordas visíveis à tabela -->
+
+        <tr>
+          <th>Imagem</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Estoque</th>
+          <th>Ações</th>
+        </tr>
+        <!-- th: Define os cabeçalhos da tabela -->
+
+        <tr>
+          <td><img src="morango.jpg" class="rounded" alt="Produto X" /></td>
+          <!-- img: Exibe a imagem do produto -->
+          <!-- class="rounded": Adiciona bordas arredondadas à imagem -->
+
+          <td>Morango</td>
+          <!-- Nome do produto -->
+          <td>R$ 100,00</td>
+          <!-- Preço do produto -->
+          <td>20</td>
+          <!-- Quantidade disponível em estoque -->
+          <td>
+            <button class="btn btn-primary">Adicionar ao Carrinho</button>
+            <!-- btn: Classe base para botões -->
+            <!-- btn-primary: Define a cor azul para destacar a ação principal -->
+
+            <button class="btn btn-info">Ver Detalhes</button>
+            <!-- btn-info: Define a cor azul-claro para um botão informativo -->
+          </td>
+        </tr>
+
+        <tr>
+          <td><img src="pera.jpg" class="rounded" alt="Produto Y" /></td>
+          <!-- Outra imagem com bordas arredondadas -->
+
+          <td>Pera</td>
+          <td>R$ 150,00</td>
+          <td>15</td>
+          <td>
+            <button class="btn btn-primary">Adicionar ao Carrinho</button>
+            <button class="btn btn-info">Ver Detalhes</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Importa o JavaScript do Bootstrap para funcionalidades interativas -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
