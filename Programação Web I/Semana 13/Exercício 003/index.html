@@ -1,0 +1,34 @@
+<!-- Data: 31/03/2025
+ Crie uma página HTML com uma tabela. Use jQuery
+ para mudar o fundo das colunas pares para verde e das 
+colunas ímpares para amarelo.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Exercício 03</title>
+  </head>
+  <body>
+    <table border="1" class="tabela">
+      <tr>
+        <td>Coluna 1</td>
+        <td>Coluna 2</td>
+        <td>Coluna 3</td>
+        <td>Coluna 4</td>
+      </tr>
+      <tr>
+        <td>Coluna 1</td>
+        <td>Coluna 2</td>
+        <td>Coluna 3</td>
+        <td>Coluna 4</td>
+      </tr>
+    </table>
+    <script>
+      $(".tabela td:nth-child(odd)").css("background-color", "yellow");
+      $(".tabela td:nth-child(even)").css("background-color", "green");
+    </script>
+  </body>
+</html>

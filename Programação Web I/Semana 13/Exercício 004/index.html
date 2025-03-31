@@ -1,0 +1,43 @@
+<!-- Data: 31/03/2025
+Crie uma página HTML com quatro parágrafos e um 
+botão. Utilize jQuery para alterar a cor do terceiro 
+parágrafo para vermelho quando o botão for clicado.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Exercício 04</title>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum doloremque
+      dolore, corrupti amet velit odio dolorem delectus nobis ab quas, quasi
+      sequi tenetur reprehenderit earum debitis! Consectetur deserunt impedit
+      quisquam?
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sint nostrum
+      temporibus culpa, magnam, sunt recusandae eos nobis porro excepturi sed?
+      In culpa eum modi velit officia odit, asperiores expedita!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ad
+      similique quas sint sit minus dolore suscipit rem vero expedita
+      exercitationem, a doloribus laborum in quod fuga aliquid error optio.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolores
+      sapiente culpa. Qui ducimus autem eius eveniet quod dolorem tenetur
+      veniam. Labore obcaecati iure dignissimos nulla saepe illo non doloribus?
+    </p>
+    <button id="mudarTexto">Mudar Cor</button>
+    <script>
+      $("#mudarTexto").click(function () {
+        $("p:eq(2)").css("color", "red");
+      });
+    </script>
+  </body>
+</html>
