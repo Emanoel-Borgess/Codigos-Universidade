@@ -1,0 +1,41 @@
+<!-- Data: 02/04/2025
+Crie uma página com três parágrafos. Ao dar um 
+duplo clique em cada parágrafo, altere a cor de fundo de cada um para uma cor diferente.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Exercício 01</title>
+    <style>
+      p {
+        padding: 10px;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="p1">Parágrafo 1: Dê um duplo clique para mudar a cor.</p>
+    <p id="p2">Parágrafo 2: Dê um duplo clique para mudar a cor.</p>
+    <p id="p3">Parágrafo 3: Dê um duplo clique para mudar a cor.</p>
+
+    <script>
+      $(document).ready(function () {
+        $("#p1").dblclick(function () {
+          $(this).css("background-color", "lightblue");
+        });
+
+        $("#p2").dblclick(function () {
+          $(this).css("background-color", "lightgreen");
+        });
+
+        $("#p3").dblclick(function () {
+          $(this).css("background-color", "lightcoral");
+        });
+      });
+    </script>
+  </body>
+</html>

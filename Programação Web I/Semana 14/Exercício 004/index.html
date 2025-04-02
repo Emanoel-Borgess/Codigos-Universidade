@@ -1,0 +1,47 @@
+<!-- Data: 02/04/2025
+ Crie uma página com duas divisões coloridas (divs). Quando o mouse entrar sobre uma das divisões, mude a cor de fundo para laranja.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Exercício 04</title>
+    <style>
+      .container {
+        display: flex;
+        gap: 20px;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        text-align: center;
+        line-height: 200px;
+        font-size: 18px;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">Div 1</div>
+      <div class="box">Div 2</div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $(".box").hover(
+          function () {
+            $(this).css("background-color", "orange");
+          },
+          function () {
+            $(this).css("background-color", "blue");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

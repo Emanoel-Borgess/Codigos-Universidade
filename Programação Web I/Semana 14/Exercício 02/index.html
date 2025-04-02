@@ -1,0 +1,40 @@
+<!-- Data: 02/04/2025
+Crie uma página com uma caixa de texto (div). Ao 
+pressionar o botão do mouse sobre a caixa de texto, altere sua cor de fundo para azul.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Exercício 02</title>
+    <style>
+      .caixa {
+        width: 200px;
+        height: 100px;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #000;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caixa">Pressione aqui</div>
+
+    <script>
+      $(document).ready(function () {
+        $(".caixa")
+          .mousedown(function () {
+            $(this).css("background-color", "blue");
+          })
+          .mouseup(function () {
+            $(this).css("background-color", "lightgray");
+          });
+      });
+    </script>
+  </body>
+</html>

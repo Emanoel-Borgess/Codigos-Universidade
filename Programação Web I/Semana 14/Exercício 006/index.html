@@ -1,0 +1,37 @@
+<!-- Data: 02/04/2025
+Crie uma página com uma imagem. Ao passar o 
+mouse sobre a imagem, troque a borda para uma 
+linha sólida preta; ao tirar o mouse, retorne à borda original.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Exercício 06</title>
+    <style>
+      img {
+        border: 5px dashed gray;
+        width: 300px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="Mona.jpeg" alt="Imagem Exemplo" id="minhaImagem" />
+
+    <script>
+      $(document).ready(function () {
+        $("#minhaImagem").hover(
+          function () {
+            $(this).css("border", "5px solid black");
+          },
+          function () {
+            $(this).css("border", "5px dashed gray");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
