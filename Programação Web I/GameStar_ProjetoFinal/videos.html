@@ -1,10 +1,13 @@
+<!--Emanoel falta alguns links de botões.
+Última modificação dia: 04/04/2025.-->
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameStar</title>
-    <link rel="shortcut icon" href="ps-icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="launcher-logo.png" type="image/x-icon" />
+    <title>GameStar - Gameplay e Trailers</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
@@ -39,15 +42,20 @@
       .destaque img {
         border-radius: 10px;
       }
+      .rodape {
+        color: #ffa500;
+      }
     </style>
   </head>
+
   <body>
+    <!-- Cabeçalho responsivo -->
     <header
-      class="d-flex justify-content-between align-items-center p-3 bg-black"
+      class="container-fluid d-flex flex-wrap justify-content-between align-items-center p-3 bg-black"
     >
       <a href="pagina.html" class="logo">GameStar</a>
       <nav>
-        <ul class="nav">
+        <ul class="nav flex-wrap">
           <li class="nav-item">
             <a class="nav-link text-white" href="jogos.html">Jogos</a>
           </li>
@@ -68,9 +76,10 @@
           </li>
         </ul>
       </nav>
-      <button class="btn btn-laranja">Obter Launcher</button>
+      <button class="btn btn-laranja mt-2 mt-md-0">Obter Launcher</button>
     </header>
 
+    <!-- Seção hero -->
     <section class="hero text-center text-white">
       <div class="container hero-content">
         <h1>Gameplay e Trailers Oficiais</h1>
@@ -82,98 +91,374 @@
           <button class="btn btn-laranja">Iniciar Sessão</button>
           <button class="btn btn-laranja">Criar Conta</button>
         </div>
-        <p>Ou inicie sessão com:</p>
+        <p class="mt-3">Ou inicie sessão com:</p>
         <div class="d-flex justify-content-center">
           <img src="ps-icon.png" alt="PlayStation" class="me-2" width="32" />
           <img src="xbox-icon.png" alt="Xbox" width="32" />
         </div>
-        <!--Manter botões.-->
       </div>
     </section>
 
-    <div class="container p-3">
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/QkkoHAzjnUs"
-          allowfullscreen
-        ></iframe>
+    <div class="container p-5">
+      <!-- Jogo 1: GTA V -->
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/QkkoHAzjnUs"
+              title="GTA V"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">Grand Theft Auto V</h3>
+            <p>
+              Quando um tratante inexperiente, um ladrão de bancos aposentado e
+              um psicopata aterrorizante se envolvem com algumas das figuras
+              mais assustadoras e problemáticas do submundo do crime, do governo
+              dos EUA e da indústria do entretenimento, eles precisam realizar
+              uma série de golpes ousados para sobreviver em uma cidade
+              implacável onde não podem confiar em ninguém, nem mesmo um no
+              outro.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=4foKyHwwfPE"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/QdBZY2fkU-0"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 2: GTA VI -->
+      <div class="row mb-4 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/QdBZY2fkU-0"
+              title="GTA VI"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">Grand Theft Auto VI</h3>
+            <p>
+              Grand Theft Auto VI vai para o estado de Leonida, que abriga as
+              ruas iluminadas pelas luzes neon de Vice City e arredores, na
+              maior e mais imersiva evolução da franquia Grand Theft Auto.
+              Disponível em 2025 para PlayStation 5 e Xbox Series X|S.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/embed/QdBZY2fkU-0"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/4rsXOjQshJs"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 3: GRANNY -->
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/4rsXOjQshJs"
+              title="GRANNY"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">GRANNY</h3>
+            <p>
+              Vovó mantém você trancado em sua casa. Agora você tem que tentar
+              sair da casa dela, mas tenha cuidado e fique quieto. Ela ouve
+              tudo. Se você deixar cair algo no chão, ela ouve e vem correndo.
+              Você pode se esconder em guarda-roupas ou debaixo das camas.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=y6H_kl0urRk"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/66eAN56g7D8"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 4: FORTNITE -->
+      <div class="row mb-4 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/66eAN56g7D8"
+              title="FORTNITE"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">FORTNITE</h3>
+            <p>
+              Crie, jogue e batalhe com seus amigos gratuitamente no Fortnite.
+              Seja a última pessoa de pé no Battle Royale e na Trocação,
+              experimente shows e eventos ao vivo, ou descubra mais de um milhão
+              de jogos feitos por criadores, incluindo corridas, parkour,
+              sobrevivência zumbi e mais. Cada Ilha do Fortnite recebe uma
+              classificação etária, basta achar a Ilha ideal para você e suas
+              amizades. Tudo isso no Fortnite!
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=aVk9D4DlT84"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/MmB9b5njVbA"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 5: MINECRAFT -->
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/MmB9b5njVbA"
+              title="MINECRAFT"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">MINECRAFT</h3>
+            <p>
+              Construa tudo que você possa imaginar, descubra mistérios
+              assustadores e sobreviva à noite no melhor jogo do tipo livre. No
+              Minecraft, cada jogada é diferente e aventuras inesquecíveis
+              aguardam em cada canto. Explore e crie seu caminho em um mundo
+              infinito que você pode construir, um bloco de cada vez.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=46vEckXzdT0"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/edYCtaNueQY"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 6: CS GO -->
+      <div class="row mb-4 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/SrggEndb-s4?si=fmjJZ0Agsc_jxDet"
+              title="CS GO"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">CS GO</h3>
+            <p>
+              O jogo coloca duas equipes, Terroristas e Contra-Terroristas, uma
+              contra a outra em diferentes modos de jogo baseados em objetivos.
+              Os modos de jogo mais comuns envolvem os Terroristas plantando uma
+              bomba enquanto os Contra-Terroristas tentam detê-los, ou os
+              Contra-Terroristas tentando resgatar reféns que os Terroristas
+              capturaram.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=52GEkhsldoY"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/DyNv44QR14g"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 7: THE SIMS -->
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/tJpxUUtdOS8?si=NH3g9-fErtIPK6tz"
+              title="THE SIMS 4"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">THE SIMS 4</h3>
+            <p>
+              O The Sims™ 4 é o jogo de simulação de vida que lhe dá poder para
+              criar e controlar pessoas. Experimente a criatividade, o humor e a
+              liberdade de jogar com a vida.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=E_hIFqRS76Q"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/OImxuxMcdjw"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 8: BULLY -->
+      <div class="row mb-4 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/OImxuxMcdjw"
+              title="BULLY"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">BULLY</h3>
+            <p>
+              Situado na cidade fictícia de Bullworth, os jogadores controlam o
+              adolescente e delinquente juvenil James "Jimmy" Hopkins, um
+              estudante involuntariamente matriculado no internato Bullworth
+              Academy, que reúne esforços para ser respeitado subindo na
+              hierarquia do sistema escolar e pondo fim ao bullying.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=l2TRjBjY5Dg"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/gmA6MrX81z4"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 9: RED DEAD -->
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/gmA6MrX81z4"
+              title="RED DEAD REDEMPTION II"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">RED DEAD REDEMPTION II</h3>
+            <p>
+              Red Dead Redemption 2 é um jogo de ação e aventura com temática de
+              faroeste . Jogado em primeira ou terceira pessoa , o jogo se passa
+              em um ambiente de mundo aberto com uma versão fictícia dos Estados
+              Unidos em 1899. Ele apresenta componentes single-player e
+              multiplayer online.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=D5F_ax3zSqo"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 mb-3">
-        <iframe
-          class="w-100"
-          height="300"
-          src="https://www.youtube.com/embed/K0u_kAWLJOA"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Jogo 10: GOD OF WAR -->
+      <div class="row mb-4 align-items-center flex-lg-row-reverse">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/K0u_kAWLJOA"
+              title="GOD OF WAR 4"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center hero-content">
+            <h3 class="logo">GOD OF WAR 4</h3>
+            <p>
+              Com a vingança contra os deuses do Olimpo em um passado distante,
+              Kratos agora vive como um mortal no reino dos deuses e monstros
+              nórdicos. É nesse mundo duro e implacável que ele deve lutar para
+              sobreviver... e ensinar seu filho a fazer o mesmo.
+            </p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=1rJBP0jz95M"
+                target="_blank"
+                class="link-info"
+                >Gameplay</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
+    <footer class="bg-black text-light text-center py-4">
+      <div class="container">
+        <p class="logo">GameStar</p>
+        <p class="mt-2 mb-1">
+          <strong>Desenvolvido por: Emanoel Borges e Pedro Vieira</strong>
+        </p>
+        <p class="mb-3">
+          <strong>© 2025 GameStar. Todos os direitos reservados.</strong>
+        </p>
+
+        <div class="d-flex justify-content-center gap-3">
+          <a href="#" class="text-light"
+            ><i class="bi bi-facebook fs-4"></i>Facebook</a
+          >
+          <a href="#" class="text-light"
+            ><i class="bi bi-twitter fs-4"></i>Twitter</a
+          >
+          <a href="#" class="text-light"
+            ><i class="bi bi-instagram fs-4"></i>Instagram</a
+          >
+          <a href="#" class="text-light"
+            ><i class="bi bi-youtube fs-4"></i>Youtube</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script do Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
