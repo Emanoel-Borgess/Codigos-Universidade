@@ -6,7 +6,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="launcher-logo.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="Imagens/launcher-logo.png"
+      type="image/x-icon"
+    />
     <title>GameStar - Gameplay e Trailers</title>
     <link
       rel="stylesheet"
@@ -29,7 +33,7 @@
         font-weight: bold;
       }
       .hero {
-        background-image: url("capavideos.jpeg");
+        background-image: url("Imagens/capavideos.jpeg");
         background-size: cover;
         background-position: center;
         padding: 100px 20px;
@@ -44,6 +48,13 @@
       }
       .rodape {
         color: #ffa500;
+      }
+      .jogo-card:hover {
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #ffa500;
+        background-color: rgb(0, 0, 0);
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgb(190, 137, 2);
       }
     </style>
   </head>
@@ -82,7 +93,7 @@
     <!-- Seção hero -->
     <section class="hero text-center text-white">
       <div class="container hero-content">
-        <h1>Gameplay e Trailers Oficiais</h1>
+        <h1>Gameplay e trailers oficiais</h1>
         <p>
           Confira os vídeos exclusivos dos nossos jogos, incluindo trailers,
           gameplays e conteúdos especiais!
@@ -93,8 +104,13 @@
         </div>
         <p class="mt-3">Ou inicie sessão com:</p>
         <div class="d-flex justify-content-center">
-          <img src="ps-icon.png" alt="PlayStation" class="me-2" width="32" />
-          <img src="xbox-icon.png" alt="Xbox" width="32" />
+          <img
+            src="Imagens/ps-icon.png"
+            alt="PlayStation"
+            class="me-2"
+            width="32"
+          />
+          <img src="Imagens/xbox-icon.png" alt="Xbox" width="32" />
         </div>
       </div>
     </section>
@@ -112,7 +128,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">Grand Theft Auto V</h3>
             <p>
               Quando um tratante inexperiente, um ladrão de bancos aposentado e
@@ -147,7 +163,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">Grand Theft Auto VI</h3>
             <p>
               Grand Theft Auto VI vai para o estado de Leonida, que abriga as
@@ -179,7 +195,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">GRANNY</h3>
             <p>
               Vovó mantém você trancado em sua casa. Agora você tem que tentar
@@ -211,7 +227,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">FORTNITE</h3>
             <p>
               Crie, jogue e batalhe com seus amigos gratuitamente no Fortnite.
@@ -246,7 +262,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">MINECRAFT</h3>
             <p>
               Construa tudo que você possa imaginar, descubra mistérios
@@ -279,7 +295,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">CS GO</h3>
             <p>
               O jogo coloca duas equipes, Terroristas e Contra-Terroristas, uma
@@ -313,7 +329,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">THE SIMS 4</h3>
             <p>
               O The Sims™ 4 é o jogo de simulação de vida que lhe dá poder para
@@ -344,7 +360,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">BULLY</h3>
             <p>
               Situado na cidade fictícia de Bullworth, os jogadores controlam o
@@ -377,7 +393,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">RED DEAD REDEMPTION II</h3>
             <p>
               Red Dead Redemption 2 é um jogo de ação e aventura com temática de
@@ -410,7 +426,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="text-center hero-content">
+          <div class="text-center hero-content jogo-card">
             <h3 class="logo">GOD OF WAR 4</h3>
             <p>
               Com a vingança contra os deuses do Olimpo em um passado distante,
@@ -431,11 +447,15 @@
       </div>
     </div>
 
+    <!--Rodapé-->
     <footer class="bg-black text-light text-center py-4">
       <div class="container">
         <p class="logo">GameStar</p>
         <p class="mt-2 mb-1">
-          <strong>Desenvolvido por: Emanoel Borges e Pedro Vieira</strong>
+          <strong
+            >Desenvolvedores <br />
+            Emanoel Borges e Pedro Vieira</strong
+          >
         </p>
         <p class="mb-3">
           <strong>© 2025 GameStar. Todos os direitos reservados.</strong>

@@ -1,156 +1,183 @@
+<!-- Emanoel falta alguns links de botões e adicionar os outros jogos.
+Última modificação dia: 04/04/2025. -->
+
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameStar</title>
-    <link rel="shortcut icon" href="ps-icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="Imagens/launcher-logo.png"
+      type="image/x-icon"
+    />
+    <title>GameStar - Jogos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
     <style>
-        body {
-            background-color: #121212;
-            color: white;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffa500;
-            text-decoration: none;
-        }
-        .btn-laranja {
-            background-color: #ffa500;
-            color: black;
-            font-weight: bold;
-        }
-        .hero {
-            background-image: url('fundojogos.png');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 20px;
-        }
-        .hero-content {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .destaque img {
-            border-radius: 10px;
-        }
-        .jogo-card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid #ffa500;
-    background-color: rgb(0, 0, 0);
-}
-
-.jogo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgb(190, 2, 2);
-}
-
-h2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ffffff;
-}
-
-h3 {
-    color: #ffffff;
-}
-
-p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #ffffff;
-}
-
+      body {
+        background-color: #121212;
+        color: white;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffa500;
+        text-decoration: none;
+      }
+      .btn-laranja {
+        background-color: #ffa500;
+        color: black;
+        font-weight: bold;
+      }
+      .hero {
+        background-image: url("Imagens/fundojogos.png");
+        background-size: cover;
+        background-position: center;
+        padding: 100px 20px;
+      }
+      .hero-content {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .destaque img {
+        border-radius: 10px;
+      }
+      .rodape {
+        color: #ffa500;
+      }
+      .jogo-card:hover {
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #ffa500;
+        background-color: rgb(0, 0, 0);
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgb(190, 137, 2);
+      }
     </style>
-</head>
-<body>
-    <header class="d-flex justify-content-between align-items-center p-3 bg-black">
-        <a href="pagina.html" class="logo">GameStar</a>
-        <nav>
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-link text-white" href="jogos.html">Jogos</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="boletim.html">Boletim</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="videos.html">Vídeos</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="downloads.html">Downloads</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="feedback.html">FeedBack</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="suporte.html">Suporte</a></li>
-            </ul>
-        </nav>
-        <button class="btn btn-laranja">Obter Launcher</button>
+  </head>
+  <body>
+    <!-- Cabeçalho responsivo -->
+    <header
+      class="container-fluid d-flex flex-wrap justify-content-between align-items-center p-3 bg-black"
+    >
+      <a href="pagina.html" class="logo">GameStar</a>
+      <nav>
+        <ul class="nav flex-wrap">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="jogos.html">Jogos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="boletim.html">Boletim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="videos.html">Vídeos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="downloads.html">Downloads</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="feedback.html">FeedBack</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="suporte.html">Suporte</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="btn btn-laranja mt-2 mt-md-0">Obter Launcher</button>
     </header>
 
+    <!-- Seção hero -->
     <section class="hero text-center text-white">
-        <div class="container hero-content">
-            <h1>Confira nossos jogos em destaque!</h1>
-            <p>Conheça oque a GameStar oferece e embarque na diversão.</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-center">
-            </div>
-            <div class="d-flex justify-content-center">
-                <img src="ps-icon.png" alt="PlayStation" class="me-2" width="32">
-                <img src="xbox-icon.png" alt="Xbox" width="32">
-            </div>
+      <div class="container hero-content">
+        <h1>Confira nossos jogos em destaque</h1>
+        <p>
+          Explore uma variedade de jogos incríveis aqui na GameStar e descubra
+          novas aventuras para jogar
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-center">
+          <button class="btn btn-laranja">Iniciar Sessão</button>
+          <button class="btn btn-laranja">Criar Conta</button>
         </div>
+        <p class="mt-3">Ou inicie sessão com:</p>
+        <div class="d-flex justify-content-center">
+          <img
+            src="Imagens/ps-icon.png"
+            alt="PlayStation"
+            class="me-2"
+            width="32"
+          />
+          <img src="Imagens/xbox-icon.png" alt="Xbox" width="32" />
+        </div>
+      </div>
     </section>
 
-   
-
+    <!-- Seção de jogos em destaque -->
     <section class="jogos-destaque container mt-5">
-        <h2 class="text-center mb-5 display-4">O melhor da GameStar</h2>
-        
+      <h2 class="text-center mb-5 display-4">O melhor da GameStar</h2>
+      <div class="container p-5">
         <!-- Jogo 1 -->
-        <div class="jogo-card mb-5 p-4 d-flex align-items-center rounded shadow-sm">
-            <img src="capagtav.jpeg" alt="Capa GTA V" class="img-fluid rounded me-4" style="width: 250px;">
+        <div class="row mb-5">
+          <div class="jogo-card p-4 d-flex align-items-center hero-content">
+            <img
+              src="Imagens/capagtav.jpeg"
+              alt="Capa GTA V"
+              class="img-fluid rounded me-4"
+              style="width: 250px"
+            />
             <div>
-                <h3 class="fw-bold">GTA V</h3>
-                <p class="text-white">Lançado pela Rockstar Games em 2013, GTA V é um dos jogos mais bem-sucedidos e influentes da história dos videogames. 
-                    Ambientado na fictícia cidade de Los Santos, inspirada em Los Angeles, o jogo oferece um vasto mundo aberto onde os jogadores podem explorar livremente, 
-                    participar de missões intensas e se envolver em atividades diversas. A trama acompanha três protagonistas únicos — Michael, 
-                    Franklin e Trevor — cujas histórias se entrelaçam em uma narrativa cheia de ação, drama e humor.</p>
+              <h3 class="fw-bold">GTA V</h3>
+              <p class="text-white">
+                Lançado pela Rockstar Games em 2013, GTA V é um dos jogos mais
+                bem-sucedidos e influentes da história dos videogames.
+                Ambientado na fictícia cidade de Los Santos, inspirada em Los
+                Angeles, o jogo oferece um vasto mundo aberto onde os jogadores
+                podem explorar livremente, participar de missões intensas e se
+                envolver em atividades diversas. A trama acompanha três
+                protagonistas únicos — Michael, Franklin e Trevor — cujas
+                histórias se entrelaçam em uma narrativa cheia de ação, drama e
+                humor.
+              </p>
             </div>
+          </div>
         </div>
-    
-        <!-- Jogo 2 -->
-        <div class="jogo-card mb-5 p-4 d-flex align-items-center rounded shadow-sm">
-            <img src="capagtav.jpeg" alt="Capa GTA V" class="img-fluid rounded me-4" style="width: 250px;">
-            <div>
-                <h3 class="fw-bold">GTA V</h3>
-                <p class="text-white">Realize assaltos audaciosos e construa seu império no modo online, desafiando jogadores ao redor do mundo.</p>
-            </div>
-        </div>
-    
-        <!-- Jogo 3 -->
-        <div class="jogo-card mb-5 p-4 d-flex align-items-center rounded shadow-sm">
-            <img src="capagtav.jpeg" alt="Capa GTA V" class="img-fluid rounded me-4" style="width: 250px;">
-            <div>
-                <h3 class="fw-bold">GTA V</h3>
-                <p class="text-white">Experimente gráficos melhorados e jogabilidade aprimorada na versão mais recente deste clássico da Rockstar Games.</p>
-            </div>
-        </div>
-    
-        <!-- Jogo 4 -->
-        <div class="jogo-card mb-5 p-4 d-flex align-items-center rounded shadow-sm">
-            <img src="capagtav.jpeg" alt="Capa GTA V" class="img-fluid rounded me-4" style="width: 250px;">
-            <div>
-                <h3 class="fw-bold">GTA V</h3>
-                <p class="text-white">Explore Los Santos como nunca antes, seja em missões ou simplesmente aproveitando a cidade e suas loucuras.</p>
-            </div>
-        </div>
-    
-        <!-- Jogo 5 -->
-        <div class="jogo-card mb-5 p-4 d-flex align-items-center rounded shadow-sm">
-            <img src="capagtav.jpeg" alt="Capa GTA V" class="img-fluid rounded me-4" style="width: 250px;">
-            <div>
-                <h3 class="fw-bold">GTA V</h3>
-                <p class="text-white">Personalize seus veículos, armas e estilo de jogo enquanto domina o submundo do crime em GTA Online.</p>
-            </div>
-        </div>
+      </div>
     </section>
-    
-    
-    
-    
-</body>
 
+    <!-- Rodapé -->
+    <footer class="bg-black text-light text-center py-4">
+      <div class="container">
+        <p class="logo">GameStar</p>
+        <p class="mt-2 mb-1">
+          <strong
+            >Desenvolvedores <br />
+            Emanoel Borges e Pedro Vieira</strong
+          >
+        </p>
+        <p class="mb-3">
+          <strong>© 2025 GameStar. Todos os direitos reservados.</strong>
+        </p>
 
+        <div class="d-flex justify-content-center gap-3">
+          <a href="#" class="text-light">
+            <i class="bi bi-facebook fs-4"></i>Facebook
+          </a>
+          <a href="#" class="text-light">
+            <i class="bi bi-twitter fs-4"></i>Twitter
+          </a>
+          <a href="#" class="text-light">
+            <i class="bi bi-instagram fs-4"></i>Instagram
+          </a>
+          <a href="#" class="text-light">
+            <i class="bi bi-youtube fs-4"></i>Youtube
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script do Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
