@@ -25,20 +25,30 @@
       }
 
       .logo {
-        font-size: 24px;
+        font-size: 29px;
         font-weight: bold;
-        color: #ffa500;
+        color: #961ccb;
         text-decoration: none;
       }
 
+      .coresBotao {
+        background-color: #961ccb;
+        border-radius: 50px;
+        padding: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .corescard {
+        background-color: #f1d8fc;
+      }
+
       .color {
-        background-color: #ffa500;
+        background-color: #961ccb;
         border-radius: 50px;
         padding: 10px;
       }
 
       .btn-laranja {
-        background-color: #ffa500;
+        background-color: #961ccb;
         color: black;
         font-weight: bold;
       }
@@ -53,16 +63,11 @@
         height: 150px;
       }
 
-      /* IMAGEM MAIOR NA DIREITA - ALTURA AUMENTADA */
-      .imagem-direita {
-        position: absolute;
-        top: 90px;
-        right: 0;
-        width: 880px;
-        height: 630px; /* Altura aumentada */
-        object-fit: cover; /* Faz a imagem preencher sem distorcer */
-        z-index: 1;
-        pointer-events: none;
+      @media (max-width: 768px) {
+        .qrcode-img {
+          width: 120px;
+          height: 110px;
+        }
       }
     </style>
   </head>
@@ -96,78 +101,83 @@
       </nav>
 
       <div class="d-flex align-items-center gap-3 mt-2 mt-md-2">
-        <a href="launcher.html"
-          ><button class="btn btn-laranja">Obter Launcher</button></a
-        >
+        <a href="launcher.html">
+          <button class="btn btn-laranja">Obter Launcher</button>
+        </a>
         <button class="color p-2 border-0">
-          <a href="login.html"
-            ><img src="Imagens/user_sem_fundo.png" alt="Logo" width="30"
-          /></a>
+          <a href="login.php">
+            <img src="Imagens/user_sem_fundo.png" alt="Logo" width="30" />
+          </a>
         </button>
       </div>
     </header>
 
-    <!-- IMAGEM GRANDE NA DIREITA -->
-    <img
-      src="Imagens/capaboletim.png"
-      alt="Imagem Direita"
-      class="imagem-direita"
-    />
-
-    <!-- Conteúdo Principal -->
-    <div class="container mt-5 mb-5 position-relative" style="z-index: 2">
-      <div class="row">
-        <div class="font col-md-6">
-          <h1 class="text-black">
-            <strong>GAMESTAR<br />GAME<br />LAUNCHER</strong>
-          </h1>
-          <p class="logo mt-3">
-            Baixe agora o GameStar Launcher <br />
-            e aproveite seus jogos, títulos e <br />
-            muito mais direto no seu PC.
-          </p>
-          <button
-            type="button"
-            class="btn btn-warning mt-3"
-            onclick="baixarPdfEIr()"
-          >
-            <strong>Download para Windows</strong>
-          </button>
-
-          <script>
-            function baixarPdfEIr() {
-              const link = document.createElement("a");
-              link.href = "arquivos/noites_brancas.pdf"; // Caminho para o PDF
-              link.download = "GameStarLauncher.pdf"; // Nome do arquivo ao baixar
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-
-              setTimeout(() => {
-                window.location.href = "botoes_de_dowloads.html";
-              }, 1000); // Tempo antes do redirecionamento
-            }
-          </script>
+    <!-- Seção Principal com imagem e conteúdo -->
+    <div class="container-fluid py-3">
+      <div class="row justify-content-center align-items-center">
+        <!-- Imagem -->
+        <div class="col-lg-6 mb-4">
+          <img
+            src="Imagens/download-animate (1).svg"
+            alt="Launcher Imagem"
+            class="img-fluid"
+            style="max-height: 850px"
+          />
         </div>
-      </div>
-    </div>
 
-    <!-- QR CODE -->
-    <div class="container-fluid">
-      <div class="row">
-        <div
-          class="col-5 bg-warning d-flex justify-content-end align-items-center"
-          style="height: 200px"
-        >
-          <div class="d-flex flex-row align-items-center gap-5 me-3">
-            <p class="text-black p-5 text-center mb-0">
-              <strong>Escaneie o QR Code e baixe<br />no celular</strong>
-            </p>
-            <img
-              src="Imagens/qrcode_www.instagram.com.png"
-              alt="QR Code"
-              class="qrcode-img"
-            />
+        <!-- Texto e botão -->
+        <div class="col-lg-4">
+          <div class="card corescard text-black p-4 shadow-lg">
+            <div class="font">
+              <h1 class="text-black text-center mb-3">
+                <strong>GAMESTAR<br />GAME<br />LAUNCHER</strong>
+              </h1>
+              <p class="logo mt-3 text-center">
+                Baixe agora o GameStar Launcher e aproveite seus jogos, títulos
+                e muito mais direto no seu PC.
+              </p>
+              <button
+                type="button"
+                class="btn btn-laranja mt-3 w-100 text-black"
+                onclick="baixarPdfEIr()"
+              >
+                <strong>Download para Windows</strong>
+              </button>
+              <div class="container mt-4">
+                <div
+                  class="d-flex align-items-center justify-content-center flex-wrap gap-4"
+                >
+                  <div>
+                    <p class="container coresBotao text-center m-0 font">
+                      <strong
+                        >Escaneie o QR Code e tenha<br />
+                        uma surpresa!</strong
+                      >
+                    </p>
+                  </div>
+                  <div>
+                    <img
+                      src="Imagens/qrcode_www.instagram.com.png"
+                      alt="QR Code"
+                      class="qrcode-img"
+                    />
+                  </div>
+                </div>
+              </div>
+              <script>
+                function baixarPdfEIr() {
+                  const link = document.createElement("a");
+                  link.href = "arquivos/noites_brancas.pdf";
+                  link.download = "GameStarLauncher.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  setTimeout(() => {
+                    window.location.href = "botoes_de_dowloads.html";
+                  }, 1000);
+                }
+              </script>
+            </div>
           </div>
         </div>
       </div>
@@ -184,18 +194,10 @@
         </p>
 
         <div class="d-flex justify-content-center gap-3">
-          <a href="#" class="text-light"
-            ><i class="bi bi-facebook fs-4"></i>Facebook</a
-          >
-          <a href="#" class="text-light"
-            ><i class="bi bi-twitter fs-4"></i>Twitter</a
-          >
-          <a href="#" class="text-light"
-            ><i class="bi bi-instagram fs-4"></i>Instagram</a
-          >
-          <a href="#" class="text-light"
-            ><i class="bi bi-youtube fs-4"></i>Youtube</a
-          >
+          <a href="#" class="text-light">Facebook</a>
+          <a href="#" class="text-light">Twitter</a>
+          <a href="#" class="text-light">Instagram</a>
+          <a href="#" class="text-light">Youtube</a>
         </div>
       </div>
     </footer>

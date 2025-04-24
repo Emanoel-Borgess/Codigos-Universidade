@@ -11,7 +11,7 @@
       href="Imagens/launcher-logo.png"
       type="image/x-icon"
     />
-    <title>GameStar</title>
+    <title>GameStar | Login</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
@@ -82,7 +82,7 @@
           ><button class="btn btn-laranja">Obter Launcher</button></a
         >
         <button class="color p-2 border-0">
-          <a href="login.html"
+          <a href="login.php"
             ><img src="Imagens/user_sem_fundo.png" alt="Logo" width="30"
           /></a>
         </button>
@@ -95,7 +95,7 @@
         <!-- IMAGEM À ESQUERDA -->
         <div class="col-lg-6 mb-5 mb-lg-3">
           <img
-            src="Imagens/imagem_criar_login.svg"
+            src="Imagens/login-animate.svg"
             alt="Login"
             class="img-fluid"
             style="max-height: 590px"
@@ -105,64 +105,39 @@
         <!-- FORMULÁRIO À DIREITA -->
         <div class="col-lg-4">
           <div
-            class="card bg-success text-black p-5 shadow-lg"
+            class="card bg-warning text-black p-5 shadow-lg"
             style="min-height: 500px"
           >
-            <h2 class="text-center mb-4">Crie sua conta</h2>
-            <form>
-              <div class="mb-3">
-                <label for="nome" class="form-label">Nome completo</label>
+            <h2 class="text-center mb-4">Faça seu login</h2>
+            <form action="teste_login.php" method="POST">
+              <div class="mb-4">
+                <label for="usuario" class="form-label">E-mail</label>
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  id="nome"
-                  name="nome"
-                  placeholder="Digite seu nome completo"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">E-mail</label>
-                <input
-                  type="email"
-                  class="form-control form-control-lg"
-                  id="email"
-                  name="email"
+                  id="usuario"
+                  name="usuario"
                   placeholder="Digite seu e-mail"
-                  required
                 />
               </div>
-
-              <div class="mb-3">
+              <div class="mb-4">
                 <label for="senha" class="form-label">Senha</label>
                 <input
                   type="password"
                   class="form-control form-control-lg"
                   id="senha"
                   name="senha"
-                  placeholder="Crie uma senha"
-                  required
+                  placeholder="Digite sua senha"
                 />
               </div>
-
-              <div class="mb-4">
-                <label for="confirmar-senha" class="form-label"
-                  >Confirmar senha</label
-                >
-                <input
-                  type="password"
-                  class="form-control form-control-lg"
-                  id="confirmar-senha"
-                  name="confirmar-senha"
-                  placeholder="Confirme sua senha"
-                  required
-                />
-              </div>
-
-              <button type="submit" class="btn btn-dark btn-lg w-100">
-                Criar conta
+              <button type="submit" name="submit" class="btn btn-dark btn-lg w-100">
+                Entrar
               </button>
+              <div class="text-center mt-3">
+                <a href="criar_login.php" class="btn btn-dark btn-lg w-10">
+                  Criar conta
+                </a>
+              </div>
             </form>
           </div>
         </div>
@@ -173,7 +148,7 @@
     <div class="container-fluid">
       <div class="row">
         <div
-          class="col-6 bg-success d-flex justify-content-end align-items-center"
+          class="col-6 bg-warning d-flex justify-content-end align-items-center"
           style="height: 200px"
         >
           <div class="d-flex flex-row align-items-center gap-5 me-3">

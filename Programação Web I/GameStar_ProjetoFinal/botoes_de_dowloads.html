@@ -17,12 +17,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
     />
     <style>
-      .hero-content {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 20px;
-        border-radius: 10px;
-      }
-
       body {
         background-color: #ffffff;
         color: white;
@@ -31,20 +25,30 @@
       }
 
       .logo {
-        font-size: 24px;
+        font-size: 29px;
         font-weight: bold;
-        color: #ffa500;
+        color: #ff725e;
         text-decoration: none;
       }
 
+      .coresBotao {
+        background-color: #ff725e;
+        border-radius: 50px;
+        padding: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .corescard {
+        background-color: #ffd6d1;
+      }
+
       .color {
-        background-color: #ffa500;
+        background-color: #ff725e;
         border-radius: 50px;
         padding: 10px;
       }
 
       .btn-laranja {
-        background-color: #ffa500;
+        background-color: #ff725e;
         color: black;
         font-weight: bold;
       }
@@ -57,6 +61,13 @@
       .qrcode-img {
         width: 170px;
         height: 150px;
+      }
+
+      @media (max-width: 768px) {
+        .qrcode-img {
+          width: 120px;
+          height: 110px;
+        }
       }
     </style>
   </head>
@@ -94,109 +105,64 @@
           <button class="btn btn-laranja">Obter Launcher</button>
         </a>
         <button class="color p-2 border-0">
-          <a href="login.html"
-            ><img src="Imagens/user_sem_fundo.png" alt="Logo" width="30"
-          /></a>
+          <a href="login.php">
+            <img src="Imagens/user_sem_fundo.png" alt="Logo" width="30" />
+          </a>
         </button>
       </div>
     </header>
 
-    <!-- Mensagem de agradecimento -->
-    <section class="hero text-center text-white mt-2 mb-2">
-      <div class="container hero-content">
-        <div class="row">
-          <div class="font">
-            <h1 class="text-white">
-              <strong>GameStar agradace pelo se dowload</strong>
-            </h1>
-            <p class="logo mt-3">
-              Obrigado pelo seu dowload! <br />
-              Aproveite seus jogos, títulos e muito mais direto no seu PC.
-            </p>
+    <!-- Seção Principal com imagem e conteúdo -->
+    <div class="container-fluid py-3">
+      <div class="row justify-content-center align-items-center">
+        <!-- Imagem -->
+        <div class="col-lg-6 mb-4">
+          <img
+            src="Imagens/online-games-addiction-animate.svg"
+            alt="Launcher Imagem"
+            class="img-fluid"
+            style="max-height: 850px"
+          />
+        </div>
+
+        <!-- Texto e botão -->
+        <div class="col-lg-4">
+          <div class="card corescard text-black p-4 shadow-lg">
+            <div class="font">
+              <h1 class="text-black text-center mb-3">
+                <strong>Obrigado por baixar o GameStar Game Launcher!</strong>
+              </h1>
+              <p class="logo mt-3 text-center">
+                A equipe GameStar agradece pela confiança. Agora é só aproveitar
+                seus jogos favoritos, explorar novos títulos e mergulhar na
+                diversão direto no seu PC.
+              </p>
+              <div class="container mt-4">
+                <div
+                  class="d-flex align-items-center justify-content-center flex-wrap gap-4"
+                >
+                  <div>
+                    <p class="container coresBotao text-center m-0 font">
+                      <strong
+                        >Escaneie o QR Code e tenha<br />
+                        uma surpresa!</strong
+                      >
+                    </p>
+                  </div>
+                  <div>
+                    <img
+                      src="Imagens/qrcode_www.instagram.com.png"
+                      alt="QR Code"
+                      class="qrcode-img"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Carrossel em destaque -->
-    <section class="hero text-center text-white">
-      <div
-        id="carouselExample"
-        class="carousel slide"
-        data-bs-ride="carousel"
-        style="height: 700px; overflow: hidden"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-
-        <div class="carousel-inner" style="height: 1000px">
-          <div class="carousel-item active">
-            <img
-              src="Imagens/background.png"
-              class="d-block w-100 h-100"
-              style="object-fit: cover"
-              alt="Downloads"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="Imagens/capaboletim.png"
-              class="d-block w-100 h-100"
-              style="object-fit: cover"
-              alt="Boletim"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="Imagens/capafeed.png"
-              class="d-block w-100 h-100"
-              style="object-fit: cover"
-              alt="Suporte"
-            />
-          </div>
-        </div>
-
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Próximo</span>
-        </button>
-      </div>
-    </section>
-
+    </div>
     <!-- Rodapé -->
     <footer class="bg-black text-light text-center py-4 mt-5">
       <div class="container">
@@ -209,18 +175,10 @@
         </p>
 
         <div class="d-flex justify-content-center gap-3">
-          <a href="#" class="text-light">
-            <i class="bi bi-facebook fs-4"></i>Facebook
-          </a>
-          <a href="#" class="text-light">
-            <i class="bi bi-twitter fs-4"></i>Twitter
-          </a>
-          <a href="#" class="text-light">
-            <i class="bi bi-instagram fs-4"></i>Instagram
-          </a>
-          <a href="#" class="text-light">
-            <i class="bi bi-youtube fs-4"></i>Youtube
-          </a>
+          <a href="#" class="text-light">Facebook</a>
+          <a href="#" class="text-light">Twitter</a>
+          <a href="#" class="text-light">Instagram</a>
+          <a href="#" class="text-light">Youtube</a>
         </div>
       </div>
     </footer>

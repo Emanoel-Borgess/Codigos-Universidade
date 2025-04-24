@@ -1,6 +1,23 @@
 <!-- Emanoel falta alguns links de botões e adicionar os outros jogos.
 Última modificação dia: 05/04/2025. -->
 
+<?php
+// Conexão com o banco de dados
+if(isset($_POST['submit'])){
+
+  /*print_r($_POST['nome']);
+  print_r($_POST['email']);
+  print_r($_POST['senha']);*/
+
+  include_once('configuracao.php');
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $result = mysqli_query($conexao, "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha')");
+    header("location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -11,7 +28,7 @@
       href="Imagens/launcher-logo.png"
       type="image/x-icon"
     />
-    <title>GameStar</title>
+    <title>GameStar | Criando Login</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
@@ -27,18 +44,18 @@
       .logo {
         font-size: 24px;
         font-weight: bold;
-        color: #ffa500;
+        color: rgb(119, 201, 46);
         text-decoration: none;
       }
 
       .color {
-        background-color: #ffa500;
+        background-color: rgb(119, 201, 46);
         border-radius: 50px;
         padding: 10px;
       }
 
       .btn-laranja {
-        background-color: #ffa500;
+        background-color: rgb(119, 201, 46);
         color: black;
         font-weight: bold;
       }
@@ -82,7 +99,7 @@
           ><button class="btn btn-laranja">Obter Launcher</button></a
         >
         <button class="color p-2 border-0">
-          <a href="login.html"
+          <a href="login.php"
             ><img src="Imagens/user_sem_fundo.png" alt="Logo" width="30"
           /></a>
         </button>
@@ -95,7 +112,7 @@
         <!-- IMAGEM À ESQUERDA -->
         <div class="col-lg-6 mb-5 mb-lg-3">
           <img
-            src="Imagens/imagem_login.svg"
+            src="Imagens/sign-up-animate.svg"
             alt="Login"
             class="img-fluid"
             style="max-height: 590px"
@@ -105,66 +122,58 @@
         <!-- FORMULÁRIO À DIREITA -->
         <div class="col-lg-4">
           <div
-            class="card bg-warning text-black p-5 shadow-lg"
+            class="card bg-success text-black p-5 shadow-lg"
             style="min-height: 500px"
           >
-            <h2 class="text-center mb-4">Faça seu login</h2>
-            <form>
-              <div class="mb-4">
-                <label for="usuario" class="form-label">E-mail</label>
+            <h2 class="text-center mb-4">Crie sua conta</h2>
+            <form action="criar_login.php" method="POST">
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome completo</label>
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  id="usuario"
-                  name="usuario"
-                  placeholder="Digite seu e-mail"
+                  id="nome"
+                  name="nome"
+                  placeholder="Digite seu nome completo"
+                  required
                 />
               </div>
-              <div class="mb-4">
+
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  id="email"
+                  name="email"
+                  placeholder="Digite seu e-mail"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
                 <input
                   type="password"
                   class="form-control form-control-lg"
                   id="senha"
                   name="senha"
-                  placeholder="Digite sua senha"
+                  placeholder="Crie uma senha"
+                  required
                 />
               </div>
-              <button type="submit" class="btn btn-dark btn-lg w-100">
-                Entrar
+              <button
+                type="submit"
+                name="submit"
+                class="btn btn-dark btn-lg w-100"
+              >
+                Criar conta
               </button>
-              <div class="text-center mt-3">
-                <a href="criar_login.html" class="btn btn-dark btn-lg w-10">
-                  Criar conta
-                </a>
-              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- QR CODE -->
-    <div class="container-fluid">
-      <div class="row">
-        <div
-          class="col-6 bg-warning d-flex justify-content-end align-items-center"
-          style="height: 200px"
-        >
-          <div class="d-flex flex-row align-items-center gap-5 me-3">
-            <p class="text-black p-5 text-center mb-0">
-              <strong>Escaneie o QR Code e baixe<br />no celular</strong>
-            </p>
-            <img
-              src="Imagens/qrcode_chrome.png"
-              alt="QR Code"
-              class="qrcode-img"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Rodapé -->
     <footer class="bg-black text-light text-center py-1 mt-5">
       <div class="container">
