@@ -10,10 +10,11 @@ session_start();
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        //print_r('Email: '.$email.'<br>');
-        //print_r('Senha: '.$senha.'<br>');
+        //print_r('Email: ' . $email);
+        //print_r('<br>');
+        //print_r('Senha: ' . $senha);
 
-        $sql = "SELECT *  FRONT usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
 
         $result = $conexao->query($sql);
         //print_r($_result);

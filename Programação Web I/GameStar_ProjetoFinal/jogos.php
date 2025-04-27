@@ -1,0 +1,352 @@
+<!--Pronto-->
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="Imagens/Imagens/launcher-logo.png"
+      type="image/x-icon"
+    />
+    <title>GameStar - Jogos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffa500;
+        text-decoration: none;
+      }
+      .btn-laranja {
+        background-color: #ffa500;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+      }
+      .hero {
+        background-image: url("Imagens/Imagens/fundojogos.png");
+        background-size: cover;
+        background-position: center;
+        padding: 100px 20px;
+      }
+      .color {
+        background-color: #ffa500;
+        border-radius: 50px;
+        padding: 10px;
+      }
+      .hero-content {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .destaque img {
+        border-radius: 10px;
+      }
+      .rodape {
+        color: #ffa500;
+      }
+      .jogo-card:hover {
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #ffa500;
+        background-color: rgb(0, 0, 0);
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgb(190, 137, 2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Cabeçalho responsivo -->
+    <header
+      class="container-fluid d-flex flex-wrap justify-content-between align-items-center p-3 bg-black"
+    >
+      <a href="pagina.php" class="logo">GameStar</a>
+      <nav>
+        <ul class="nav flex-wrap">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="jogos.php">Jogos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="videos.php">Vídeos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="downloads.php">Downloads</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="feedback_login.php">FeedBack</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="suporte_login.php">Suporte</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="d-flex align-items-center gap-3 mt-2 mt-md-2">
+        <a href="launcher.php"
+          ><button class="btn btn-laranja">Obter Launcher</button></a
+        >
+        <div class="dropdown">
+            <button class="btn btn-laranja dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Usuário
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="editar_perfil.php">Editar perfil</a></li>
+                <li><a class="dropdown-item" href="excluir_perfil.php">Excluir perfil</a></li>
+                <li><a class="dropdown-item" href="sair.php">Sair</a></li>
+            </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Seção hero -->
+    <section class="hero text-center text-white">
+      <div class="container hero-content">
+        <h1>Confira nossos jogos em destaque</h1>
+        <p>
+          Explore uma variedade de jogos incríveis aqui na GameStar e descubra
+          novas aventuras para jogar
+        </p>
+      </div>
+    </section>
+
+    <!-- Seção de jogos em destaque -->
+    <section class="jogos-destaque mt-5">
+      <h1 class="text-center text-warning">O melhor da GameStar</h1>
+      <div class="p-3">
+        <div class="row">
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/minecapa.png" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  Ah, Minecraft... esse poema cúbico que a juventude e os velhos de alma não cansam de recitar. 
+                  É mais do que um jogo — é um portal pra infinitos mundos, onde blocos viram castelos, 
+                  cavernas escondem segredos e a criatividade é a única espada que nunca quebra.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capagtav.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  GTA V é o caos em forma de liberdade: três vidas, uma cidade, e infinitas possibilidades. 
+                  Los Santos pulsa como um coração bandido, onde cada esquina tem uma história e cada bala tem um destino. 
+                  É adrenalina, drama e zoeira no mesmo pacote explosivo.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capagtasa.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  GTA San Andreas é lenda viva, nostalgia pura em cada pixel. 
+                  É CJ voltando pra Grove Street, é bicicleta, respeito e guerra de gangue. 
+                  Um clássico que moldou uma geração a tiros, trilha sonora e muito coração. 
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capared.png" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  Red Dead Redemption II é poesia empoeirada no Velho Oeste. 
+                  É Arthur Morgan entre o açoite da lei e a ternura do pôr do sol. 
+                  Um épico sobre honra, perda e liberdade — onde até o silêncio carrega história. 
+                  Cada galope é um adeus, cada escolha, uma cicatriz. 
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/cscapa.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  CS:GO é pura tensão em cada round. É a adrenalina de desarmar uma bomba, a precisão de uma bala certeira, 
+                  o trabalho em equipe que decide tudo. Com uma comunidade que nunca para e partidas que sempre desafiam, 
+                  é a arena onde a habilidade é tudo e a vitória, suada.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capagranny.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  Granny é o terror no silêncio, o medo em cada rangido do assoalho. Tu acorda numa casa escura, trancado, e tudo o que ouve... 
+                  é ela. A vovó do capiroto, que te caça sem piedade. Cada passo em falso é um aviso: “Sai daí antes que seja tarde.” 
+                  É fuga, susto e coração acelerado num loop sombrio.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capafort.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  Fortnite é o espetáculo colorido do caos criativo. É dança no meio do tiroteio, construção em segundos e 
+                  batalhas que viram festa. Cada partida é um palco onde só um sobrevive — mas todo mundo brilha. Um universo em 
+                  constante mutação, onde moda, música e bala se encontram no topo da montanha. 
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capabully.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  Bully é o colégio como nunca te contaram: selvagem, sarcástico e cheio de treta.
+                  É Jimmy Hopkins contra o mundo, enfrentando valentões, professores e o caos adolescente 
+                  com socos e notas medianas. Uma ode à rebeldia, onde crescer dói — mas brigar no pátio é quase terapia.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/godcapa.jpg" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  God of War é fúria transformada em mito. Kratos, o Fantasma de Esparta, corta os céus com sua dor, 
+                  vingança e redenção. Deus contra deus, pai contra o próprio passado. É sangue, poesia e silêncio entre 
+                  rugidos — onde cada golpe é uma cicatriz na alma e cada suspiro, uma lembrança do que já foi perdido.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capathesims.png" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  The Sims 4 é a vida em código, um teatro de emoções pixeladas. Tu cria, ama, destrói — tudo num clique. 
+                  É drama, riso e caos doméstico, onde o banheiro entupido e o casamento surpresa andam lado a lado. 
+                  Um mundo onde tu é Deus, arquiteto e fofoqueiro ao mesmo tempo. 
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capatheforest.png" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  The Forest é o terror selvagem onde a sobrevivência é o único grito que ecoa. Perdido numa ilha isolada, tu enfrentas monstros, 
+                  a fome e os próprios demônios enquanto constrói teu abrigo e tenta entender o que aconteceu. Cada árvore esconde um segredo, 
+                  e cada noite é uma ameaça. É a natureza em sua forma mais cruel e visceral.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4">
+            <div class="card mx-auto jogo-card bg-black" style="width: 100%">
+              <img src="Imagens/Imagens/capaAmong.png" class="card-img-top" alt="..." />
+              <div class="card-body bg-black">
+                <p class="card-text text-white">
+                  Among Us é a paranoia em forma de jogo. Amigos, mentiras e uma nave cheia de suspeitas: quem é o impostor? 
+                  É um teste de confiança onde qualquer sorriso pode ser traição e qualquer silêncio, um veredito. Desconfia de todos, 
+                  mas não confie em ninguém — e tente não ser pego!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mt-5 text-center">
+      <h2 class="mb-4 text-warning">Em breve</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-md-2 mx-2">
+          <div class="card jogo-card bg-black">
+            <img src="Imagens/Imagens/capaUFU.png" class="card-img-top" alt="..." />
+            <div class="card-body bg-black">
+              <p class="card-text text-white">UFU - The Draduation</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 mx-2">
+          <div class="card jogo-card bg-black">
+            <img src="Imagens/Imagens/capaGTA6.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body bg-black">
+              <p class="card-text text-white">Grand Theft Auto VI</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 mx-2">
+          <div class="card jogo-card bg-black">
+            <img src="Imagens/Imagens/capaLet.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body bg-black">
+              <p class="card-text text-white">Left For Dead</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 mx-2">
+          <div class="card jogo-card bg-black">
+            <img src="Imagens/Imagens/capaNeed.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body bg-black">
+              <p class="card-text text-white">Need For Speed</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 mx-2">
+          <div class="card jogo-card bg-black">
+            <img src="Imagens/Imagens/capaCarry.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body bg-black">
+              <p class="card-text text-white">Carry The Glass</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-black text-light text-center py-4">
+      <div class="container">
+        <p class="logo">GameStar</p>
+        <p class="mt-2 mb-1">
+          <strong
+            >Desenvolvedores <br />
+            Emanoel Borges e Pedro Vieira</strong
+          >
+        </p>
+        <p class="mb-3">
+          <strong>© 2025 GameStar. Todos os direitos reservados.</strong>
+        </p>
+
+        <div class="d-flex justify-content-center gap-3">
+          <a href="#" class="text-light">
+            <i class="bi bi-facebook fs-4"></i>Facebook
+          </a>
+          <a href="#" class="text-light">
+            <i class="bi bi-twitter fs-4"></i>Twitter
+          </a>
+          <a href="#" class="text-light">
+            <i class="bi bi-instagram fs-4"></i>Instagram
+          </a>
+          <a href="#" class="text-light">
+            <i class="bi bi-youtube fs-4"></i>Youtube
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script do Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

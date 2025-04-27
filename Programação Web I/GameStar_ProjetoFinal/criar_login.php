@@ -1,5 +1,4 @@
-<!-- Emanoel falta alguns links de botões e adicionar os outros jogos.
-Última modificação dia: 05/04/2025. -->
+<!-- Funcionando tudo conforme o esperado-->
 
 <?php
 // Conexão com o banco de dados
@@ -25,7 +24,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="Imagens/launcher-logo.png"
+      href="Imagens/Imagens/launcher-logo.png"
       type="image/x-icon"
     />
     <title>GameStar | Criando Login</title>
@@ -72,47 +71,19 @@ if(isset($_POST['submit'])){
       class="container-fluid d-flex flex-wrap justify-content-between align-items-center p-3 bg-black"
     >
       <a href="pagina.html" class="logo">GameStar</a>
-      <nav>
-        <ul class="nav flex-wrap">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="jogos.html">Jogos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="boletim.html">Boletim</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="videos.html">Vídeos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="downloads.html">Downloads</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="feedback.html">FeedBack</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="suporte.html">Suporte</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="d-flex align-items-center gap-3 mt-2 mt-md-2">
-        <a href="launcher.html"
-          ><button class="btn btn-laranja">Obter Launcher</button></a
-        >
-        <button class="color p-2 border-0">
-          <a href="login.php"
-            ><img src="Imagens/user_sem_fundo.png" alt="Logo" width="30"
-          /></a>
-        </button>
-      </div>
+      
     </header>
 
     <!-- BLOCO DE LOGIN COM IMAGEM À ESQUERDA -->
+    <div class="py-2 ms-2">
+        <a class="btn btn-dark text-white" href="pagina.html" role="button">Voltar</a>
+        </div>
     <div class="container-fluid py-5">
       <div class="row justify-content-center align-items-center">
         <!-- IMAGEM À ESQUERDA -->
         <div class="col-lg-6 mb-5 mb-lg-3">
           <img
-            src="Imagens/sign-up-animate.svg"
+            src="Imagens/Imagens/sign-up-animate.svg"
             alt="Login"
             class="img-fluid"
             style="max-height: 590px"
@@ -169,6 +140,11 @@ if(isset($_POST['submit'])){
               >
                 Criar conta
               </button>
+              <div class="text-center mt-3">
+                <a href="login.php" class="btn btn-dark btn-lg w-10">
+                  Fazer login
+                </a>
+              </div>
             </form>
           </div>
         </div>

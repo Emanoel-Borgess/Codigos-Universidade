@@ -11,7 +11,7 @@
         die("Erro de conexão: " . $conexao->connect_error); //caso tenha erro, exibe a mensagem de erro
     } else {
     echo "Conexão bem-sucedida"; //caso não tenha erro, exibe a mensagem de sucesso
-   }
- */
+   }*/
+ 
 
 ?>
