@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class CadastroPanel extends JPanel {
     private SistemaDoacao sistema;
     private JComboBox<String> tipoCadastro;
