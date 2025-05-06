@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Excluir Perfil</h2>
     <p>Tem certeza de que deseja excluir sua conta?</p>
     <form method="POST">
-      <button type="submit" class="btn btn-danger text-black">Excluir conta</button>
+      <button type="submit" class="btn btn-laranja text-black">Excluir conta</button>
       <a class="btn btn-laranja" href="pagina.php" role="button">Cancelar</a>
     </form>
   </main>

@@ -154,13 +154,13 @@ $conexao->close();
             <a class="nav-link text-white" href="videos.html">Vídeos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="downloads.html">Downloads</a>
+            <a class="nav-link text-white" href="downloads.php">Downloads</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="feedback.php">FeedBack</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="suporte.php">Suporte</a>
+            <a class="nav-link text-white" href="suporte.php">Fórum</a>
           </li>
         </ul>
       </nav>

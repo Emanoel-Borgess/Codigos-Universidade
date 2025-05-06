@@ -76,13 +76,13 @@
             <a class="nav-link text-white" href="videos.php">Vídeos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="downloads.php">Downloads</a>
+            <a class="nav-link text-white" href="downloads_login.php">Downloads</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="feedback_login.php">FeedBack</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="suporte_login.php">Suporte</a>
+            <a class="nav-link text-white" href="suporte_login.php">Fórum</a>
           </li>
         </ul>
       </nav>

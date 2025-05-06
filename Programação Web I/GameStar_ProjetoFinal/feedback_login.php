@@ -143,9 +143,9 @@ $conexao->close();
     <ul class="nav flex-wrap">
       <li class="nav-item"><a class="nav-link" href="jogos.php">Jogos</a></li>
       <li class="nav-item"><a class="nav-link" href="videos.php">Vídeos</a></li>
-      <li class="nav-item"><a class="nav-link" href="downloads.php">Downloads</a></li>
+      <li class="nav-item"><a class="nav-link" href="downloads_login.php">Downloads</a></li>
       <li class="nav-item"><a class="nav-link" href="feedback_login.php">FeedBack</a></li>
-      <li class="nav-item"><a class="nav-link" href="suporte_login.php">Suporte</a></li>
+      <li class="nav-item"><a class="nav-link" href="suporte_login.php">Fórum</a></li>
     </ul>
   </nav>
   <div class="d-flex align-items-center gap-3 mt-2 mt-md-2">

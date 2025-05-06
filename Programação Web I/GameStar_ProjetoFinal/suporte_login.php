@@ -29,7 +29,7 @@ $result = $conexao->query("SELECT * FROM suporte ORDER BY id DESC");
       href="Imagens/Imagens/launcher-logo.png"
       type="image/x-icon"
     />
-    <title>GameStar - Suporte</title>
+    <title>GameStar - Fórum</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
@@ -112,13 +112,13 @@ $result = $conexao->query("SELECT * FROM suporte ORDER BY id DESC");
             <a class="nav-link text-white" href="videos.php">Vídeos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="downloads.php">Downloads</a>
+            <a class="nav-link text-white" href="downloads_login.php">Downloads</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="feedback_login.php">FeedBack</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="suporte_login.php">Suporte</a>
+            <a class="nav-link text-white" href="suporte_login.php">Fórum</a>
           </li>
         </ul>
       </nav>
@@ -144,8 +144,7 @@ $result = $conexao->query("SELECT * FROM suporte ORDER BY id DESC");
       <div class="container hero-content">
         <h1>Ajuda e soluções para você</h1>
         <p>
-          Encontre respostas, tire suas dúvidas e entre em contato com nossa
-          equipe de suporte
+          Encontre respostas, tire suas dúvidas e interaja com outros jogadores.
         </p>
       </div>
     </section>
@@ -154,7 +153,7 @@ $result = $conexao->query("SELECT * FROM suporte ORDER BY id DESC");
       <div class="row">
         <!-- COLUNA DOS FEEDBACKS (à esquerda) -->
         <div class="col-lg-5 mb-5 mt-4">
-          <h2 class="text-warning text-center">Últimos chamados</h2>
+          <h2 class="text-warning text-center">Últimas Interações</h2>
           <div class="row">
           <?php while($row = $result->fetch_assoc()): ?>
         <div class="p-3 mb-3 feedback_box feedback-item text-black">
@@ -163,11 +162,11 @@ $result = $conexao->query("SELECT * FROM suporte ORDER BY id DESC");
   
           <?php if (!empty($row["resposta"])): ?>
             <div class="bg-light text-dark p-2 border-start ps-3 mt-2">
-              <strong>Suporte respondeu:</strong><br>
+              <strong>Resposta:</strong><br>
               <?= nl2br(htmlspecialchars($row["resposta"])) ?>
             </div>
           <?php else: ?>
-            <em>Aguardando resposta do suporte...</em><br>
+            <em>Aguardando resposta...</em><br>
             <button class="btn btn-primary mt-2" onclick="mostrarFormularioResposta(<?= $row['id'] ?>)">Responder</button>
             <form method="post" action="responder_suporte.php" id="formResposta<?= $row['id'] ?>" style="display:none;" class="mt-3">
               <input type="hidden" name="id" value="<?= $row['id'] ?>">
@@ -191,7 +190,7 @@ $result = $conexao->query("SELECT * FROM suporte ORDER BY id DESC");
         <!-- COLUNA DO FORMULÁRIO (à direita) -->
         <div class="col-lg-7 mb-3 mt-1">
           <div class="feedback">
-          <h2 class="text-center text-black">Solicite Suporte</h2>
+          <h2 class="text-center text-black">Solicite o Fórum</h2>
         <form method="post" class="mb-5">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>

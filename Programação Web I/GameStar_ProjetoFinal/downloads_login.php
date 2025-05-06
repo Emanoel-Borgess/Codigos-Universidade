@@ -66,38 +66,40 @@
     <header
       class="container-fluid d-flex flex-wrap justify-content-between align-items-center p-3 bg-black"
     >
-      <a href="pagina.html" class="logo">GameStar</a>
+      <a href="pagina.php" class="logo">GameStar</a>
       <nav>
         <ul class="nav flex-wrap">
           <li class="nav-item">
-            <a class="nav-link text-white" href="jogos.html">Jogos</a>
+            <a class="nav-link text-white" href="jogos.php">Jogos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="videos.html">Vídeos</a>
+            <a class="nav-link text-white" href="videos.php">Vídeos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="downloads.html">Downloads</a>
+            <a class="nav-link text-white" href="downloads_login.php">Downloads</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="feedback.php">FeedBack</a>
+            <a class="nav-link text-white" href="feedback_login.php">FeedBack</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="suporte.php">Suporte</a>
+            <a class="nav-link text-white" href="suporte_login.php">Fórum</a>
           </li>
         </ul>
       </nav>
       <div class="d-flex align-items-center gap-3 mt-2 mt-md-2">
-        <a href="launcher.html"
+        <a href="launcher.php"
           ><button class="btn btn-laranja">Obter Launcher</button></a
         >
-        <button class="color p-2 border-0">
-          <a href="login.php"
-            ><img
-              src="Imagens/Imagens/user_sem_fundo.png"
-              alt="Logo"
-              width="30"
-          /></a>
-        </button>
+        <div class="dropdown">
+            <button class="btn btn-laranja dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Usuário
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="editar_perfil.php">Editar perfil</a></li>
+                <li><a class="dropdown-item" href="excluir_perfil.php">Excluir perfil</a></li>
+                <li><a class="dropdown-item" href="sair.php">Sair</a></li>
+            </ul>
+        </div>
       </div>
     </header>
 
@@ -109,24 +111,6 @@
           Encontre atualizações, instaladores e conteúdos extras para seus jogos
           favoritos
         </p>
-        <div class="d-grid gap-2 d-md-flex justify-content-center">
-          <a href="login.php"
-            ><button class="btn btn-laranja">Iniciar Sessão</button></a
-          >
-          <a href="criar_login.php"
-            ><button class="btn btn-laranja">Criar Conta</button></a
-          >
-        </div>
-        <p class="mt-3">Ou inicie sessão com:</p>
-        <div class="d-flex justify-content-center">
-          <img
-            src="Imagens/Imagens/ps-icon.png"
-            alt="GameStar"
-            class="me-2"
-            width="32"
-          />
-          <img src="Imagens/Imagens/xbox-icon.png" alt="Xbox" width="32" />
-        </div>
       </div>
     </section>
 
