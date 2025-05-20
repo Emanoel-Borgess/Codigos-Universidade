@@ -1,0 +1,10 @@
+br\main\laboratorio06ex1strategy\CarrinhoCompras.class
+br\main\laboratorio06ex1strategy\SedexFrete.class
+br\main\laboratorio06ex1strategy\BoletoPagamento.class
+br\main\laboratorio06ex1strategy\FreteStrategy.class
+br\main\laboratorio06ex1strategy\CartaoPagamento.class
+br\main\laboratorio06ex1strategy\FreteNormal.class
+br\main\laboratorio06ex1strategy\Item.class
+br\main\laboratorio06ex1strategy\Main.class
+br\main\laboratorio06ex1strategy\PixPagamento.class
+br\main\laboratorio06ex1strategy\PagamentoStrategy.class

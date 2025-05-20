@@ -15,6 +15,28 @@ import java.util.Scanner;
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
+    static Empregado empregados[] = new Empregado[10];
+    //Variável de controle da estrutura de repetição
+    static Integer index = 0;
+
+    public static Empregado[] getEmpregados() {
+        return empregados;
+    }
+
+    public static void setEmpregados(Empregado[] empregados) {
+        FormPrincipal.empregados = empregados;
+    }
+
+    public static Integer getIndex() {
+        return index;
+    }
+
+    public static void setIndex(Integer index) {
+        FormPrincipal.index = index;
+    }
+    
+    
+     
     /**
      * Creates new form FormPrincipal
      */
@@ -178,8 +200,10 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
     }
-     public void inserirCLT(String nome, String endereco, String cpf, double salario){
+    
+        public void inserirCLT(String nome, String endereco, String cpf, Double salario){
         //Criando objeto da classe CLT temporario
+        System.out.println("Numero de registro:"+index);
         EmpregadoCLT temp = new EmpregadoCLT(nome,endereco,cpf,salario);
         //Exibindo dados na console
         System.out.println("Nome:"+temp.getNome());
@@ -187,27 +211,25 @@ public class FormPrincipal extends javax.swing.JFrame {
         System.out.println("CPF:"+temp.getCpf());
         System.out.println("Salario:"+temp.getsBrutoCLT());
         empregados[index]=temp;//Atribuindo o conteudo do objeto a posição da lista
-        index++; //Incrementando a variável porque foi inserido um novo elemento
-        System.out.println("Numero do registro:"+index);
+        index++; //Incrementando a variável porque foi inserido um novo elemento 
+        System.out.println("Numero de registro:"+index);
     }
     
-    public void inserirHorista(String nome, String endereco, String cpf, int nHoras, double vHoras){
+    public void inserirHorista(String nome, String endereco, String cpf, Integer n, Double valor){
         //Criando objeto da classe Horista temporario
-        EmpregadoHorista temp = new EmpregadoHorista(nome,endereco,cpf,nHoras,vHoras);
-        //Exibindo dados na console
+        System.out.println("Numero de registro:"+index);
+        EmpregadoHorista temp = new EmpregadoHorista(nome,endereco,cpf,n,valor);
+        empregados[index]=temp;//Atribuindo o conteudo do objeto a posição da lista
         System.out.println("Nome:"+temp.getNome());
         System.out.println("Endereco:"+temp.getEndereco());
         System.out.println("CPF:"+temp.getCpf());
-        System.out.println("Numeros de horas:"+temp.getnHoras());
-        System.out.println("Preco da hora:"+temp.getPrecoH());
-        empregados[index]=temp;//Atribuindo o conteudo do objeto a posição da lista
+        System.out.println("Numero de Horas:"+temp.getnHoras());
+        System.out.println("Valor:"+temp.getPrecoH());        
         index++; //Incrementando a variável porque foi inserido um novo elemento
-        System.out.println("Numero do registro:"+index);
+        System.out.println("Numero de registro:"+index);
+
     }
-    //Gerando lista de Empregados
-    Empregado empregados[] = new Empregado[10];
-    //Variável de controle da estrutura de repetição
-    Integer index = 0;
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktop;
     private javax.swing.JMenuItem jMCLT;
@@ -219,6 +241,4 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMSair;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
-
-    
 }

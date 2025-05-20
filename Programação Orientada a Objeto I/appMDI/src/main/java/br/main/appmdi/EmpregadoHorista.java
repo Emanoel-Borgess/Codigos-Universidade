@@ -20,12 +20,12 @@ public class EmpregadoHorista extends Empregado {
         precoH = 0.0;
     }
     
-    public EmpregadoHorista(String nH, String endH, String cpf3, int nHorasH, Double vHorasH){
-     nome = nH;
-     endereco = endH;
-     cpf = cpf3;
-     nHoras = nHorasH;
-     precoH = vHorasH;
+    public EmpregadoHorista(String no, String end, String cpf2, Integer horas, Double preco){
+        nome = no;
+        endereco = end;
+        cpf = cpf2;
+        nHoras = horas;
+        precoH = preco;
     }
     
     public Integer getnHoras() {

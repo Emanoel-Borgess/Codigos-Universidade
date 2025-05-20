@@ -17,11 +17,12 @@ public class EmpregadoCLT extends Empregado {
     public EmpregadoCLT(){
         sBrutoCLT = 0.0;
     }
+    
     public EmpregadoCLT(String n, String end, String cpf2, Double sBruto){
-     nome = n;
-     endereco = end;
-     cpf = cpf2;
-     sBrutoCLT = sBruto;
+        nome = n;
+        endereco = end;
+        cpf = cpf2;
+        sBrutoCLT = sBruto;
     }
 
     public Double getsBrutoCLT() {

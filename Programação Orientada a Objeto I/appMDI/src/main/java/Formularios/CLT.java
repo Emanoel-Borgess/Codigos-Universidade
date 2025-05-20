@@ -6,6 +6,7 @@ package Formularios;
 
 import br.main.appmdi.FormPrincipal;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -117,19 +118,19 @@ public class CLT extends javax.swing.JInternalFrame {
         String nome;
         String endereco;
         String cpf;
-        double salario;
-        //Recuperando dodos da interface
+        Double salario;
+        //Recuperando dados da interface
         nome = jTNome.getText();
         endereco = jTEndereco.getText();
         cpf = jTCPF.getText();
         salario = Double.parseDouble(jTSalarioBruto.getText());
         form.inserirCLT(nome,endereco,cpf,salario);
-        JOptionPane.showMessageDialog(rootPane, "Registro realizado com sucesso");
-        //Limpando os campos
+        JOptionPane.showMessageDialog(rootPane, "Registro realizado com sucesso!");
+        //Limpando os campo
         jTNome.setText("");
         jTEndereco.setText("");
         jTCPF.setText("");
-        jTSalarioBruto.setText("");
+        jTSalarioBruto.setText("");        
     }//GEN-LAST:event_jBSalvarActionPerformed
 
 

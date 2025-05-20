@@ -127,20 +127,21 @@ public class Horista extends javax.swing.JInternalFrame {
     private void jBSalvarHoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarHoristaActionPerformed
         // TODO add your handling code here:
         FormPrincipal form = new FormPrincipal();
+        //Recuperando as informacoes do formulario
         String nome;
         String endereco;
         String cpf;
-        int nHoras;
-        double vHoras;
-        //Recuperando dodos da interface
+        Integer n;
+        Double valor;
         nome = jTNomeHorista.getText();
         endereco = jTEnderecoHorista.getText();
         cpf = jTCPFHorista.getText();
-        nHoras = Integer.parseInt(jTNumerodeHoras.getText());
-        vHoras = Double.parseDouble(jTValorHora.getText());
-        form.inserirHorista(nome,endereco,cpf,nHoras,vHoras);
-        JOptionPane.showMessageDialog(rootPane, "Registro realizado com sucesso");
-        //Limpando os campos
+        n = Integer.parseInt(jTNumerodeHoras.getText());
+        valor = Double.parseDouble(jTValorHora.getText());
+        //Chamando o metodo
+        form.inserirHorista(nome,endereco,cpf,n,valor);
+         JOptionPane.showMessageDialog(rootPane, "O registro foi inserido!");
+        //Limpar os campos
         jTNomeHorista.setText("");
         jTEnderecoHorista.setText("");
         jTCPFHorista.setText("");

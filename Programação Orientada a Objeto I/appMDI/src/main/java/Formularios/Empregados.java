@@ -4,6 +4,13 @@
  */
 package Formularios;
 
+import br.main.appmdi.Empregado;
+import br.main.appmdi.EmpregadoCLT;
+import br.main.appmdi.EmpregadoHorista;
+import br.main.appmdi.FormPrincipal;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sdc.daniel
@@ -13,6 +20,9 @@ public class Empregados extends javax.swing.JInternalFrame {
     /**
      * Creates new form Empregados
      */
+    Empregado empregados[] = new Empregado[10];
+    static Integer index;
+    
     public Empregados() {
         initComponents();
     }
@@ -62,6 +72,11 @@ public class Empregados extends javax.swing.JInternalFrame {
         jRTodos.setText("Todos");
 
         jBListar.setText("Listar");
+        jBListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +115,42 @@ public class Empregados extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListarActionPerformed
+        // TODO add your handling code here:
+        //Criar um objeto JTable para ser modificado via código
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        FormPrincipal form = new FormPrincipal();
+        //Recurar a lista de empregados e o index
+        Empregado empregados[] = form.getEmpregados();
+        Integer index = form.getIndex();
+        //Limpando as linhas do jTable
+        model.setNumRows(0);
+        
+        //Estrutura de repetição para Adicionar os Empregados no jTable
+        for(int count =0;count<index;count++)
+        {
+            if(jRCLT.isSelected()||jRTodos.isSelected())
+            //Como as informações não são genéricas temos que verificar qual é o tipo
+            //do objeto da lista: CLT ou Horista
+            if(empregados[count]instanceof EmpregadoCLT){ //se for EmpregadoCLT então imprime
+                //Imprimindo o Salario bruto e o Salario Líquido
+                EmpregadoCLT temp = (EmpregadoCLT)(empregados[count]); //Cast para deixar os dados compativeis   
+            //Adicionando os dados de CLT ao jTable
+            model.addRow(new Object[]{temp.getNome(),temp.getEndereco(),temp.getCpf(),temp.getsBrutoCLT()});
+            }
+            //Verificando se é horista
+            if(jRHorista.isSelected()||jRTodos.isSelected())
+            if(empregados[count]instanceof EmpregadoHorista){ //se for Horista então imprime
+            //Imprimindo o Salario bruto e o Salario Líquido
+            EmpregadoHorista temp = (EmpregadoHorista)(empregados[count]); //Cast para deixar os dados compativeis
+            //Adicionando os dados de Horista ao jTable
+            model.addRow(new Object[]{temp.getNome(),temp.getEndereco(),temp.getCpf(),"",temp.getnHoras(),temp.getPrecoH()});
+            
+        }  
+        }
+        
+    }//GEN-LAST:event_jBListarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

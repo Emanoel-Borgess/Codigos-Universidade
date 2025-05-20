@@ -1,0 +1,7 @@
+br/main/appfileserializado/RandomAccessAccountRecord.class
+br/main/appfileserializado/AccountRecord.class
+br/main/appfileserializado/WriteRandomFile.class
+br/main/appfileserializado/ReadRandomFile.class
+br/main/appfileserializado/CreateRandomFile.class
+br/main/appfileserializado/AppFileSerializado.class
+br/main/appfileserializado/IOException.class
