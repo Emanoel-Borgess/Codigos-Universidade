@@ -1,0 +1,69 @@
+body {
+    font-family: sans-serif;
+    background-color: #000000;
+    padding: 20px;
+}
+
+.convite {
+    max-width: 600px;
+    background: #fff;
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgb(146, 80, 253);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    color: #555;
+}
+
+.caixaDeTexto {
+    margin-bottom: 10px;
+}
+
+.lista {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.linha {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.linha input {
+    flex: 1;
+    padding: 6px;
+}
+
+.linha button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#confirmar {
+    width: 100%;
+    background-color: #007bff;
+}

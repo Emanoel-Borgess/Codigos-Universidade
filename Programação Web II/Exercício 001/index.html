@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de Presença</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="convite">
+        <h1>Churrasco de Aniversário</h1>
+        <p>Confirme sua presença abaixo:</p>
+
+        <!-- Área de adultos -->
+        <div class="caixaDeTexto">
+            <h2>Adultos</h2>
+            <ul id="adultos-lista" class="lista"></ul>
+            <div>
+                <button onclick="adicionar('adultos')">+1 adulto</button>
+            </div>
+        </div>
+
+        <!-- Área de crianças -->
+        <div class="caixaDeTexto">
+            <h2>Crianças</h2>
+            <ul id="criancas-lista" class="lista"></ul>
+            <div>
+                <button onclick="adicionar('criancas')">+1 criança</button>
+            </div>
+        </div>
+
+        <!-- Botão final -->
+        <div class="caixaDeTexto">
+            <button id="confirmar" onclick="confirmar()">Confirmar Presença</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
