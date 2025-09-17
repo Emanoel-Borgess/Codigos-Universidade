@@ -111,23 +111,6 @@ app.post("/api/login", (req, res) => {
   });
 });
 
-// Listar usuários
-app.get("/api/users", (req, res) => {
-  db.all("SELECT id, nome, email, perfil FROM users", [], (err, rows) => {
-    if (err) return res.status(500).json({ error: "Erro ao buscar usuários" });
-    res.json(rows);
-  });
-});
-
-// Apagar usuário
-app.delete("/api/users/:id", (req, res) => {
-  const id = req.params.id;
-  db.run("DELETE FROM users WHERE id = ?", [id], function(err) {
-    if (err) return res.status(500).json({ error: "Erro ao apagar usuário" });
-    res.json({ success: true });
-  });
-});
-
 // ================= ANIMAIS =================
 
 // Listar todos os animais
