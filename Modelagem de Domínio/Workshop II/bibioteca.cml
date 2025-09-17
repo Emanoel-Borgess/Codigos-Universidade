@@ -1,0 +1,64 @@
+ContextMap SistemaBiblioteca {
+  type = BigPicture
+  contains UsuarioContexto, LivrosContexto, EmprestimosContexto
+
+  UsuarioContexto [U, OHS] -> EmprestimosContexto [D, CF]
+  LivrosContexto  [U, OHS] -> EmprestimosContexto [D, CF]
+}
+
+BoundedContext UsuarioContexto {
+  domainVisionStatement = "Gerencia usuários da biblioteca"
+
+  Aggregate Usuarios {
+    Entity Usuario {
+      aggregateRoot
+      Long id key
+      String nome
+      String enderecoEmail
+      String telefone
+    }
+  }
+}
+
+BoundedContext LivrosContexto {
+  domainVisionStatement = "Gerencia catálogo de livros"
+
+  Aggregate Catalogo {
+    Entity Livro {
+      aggregateRoot
+      String isbn key
+      String titulo
+      String autor
+      int paginas
+      boolean disponivel
+      Date dataPublicacao
+    }
+  }
+}
+
+BoundedContext EmprestimosContexto {
+  type = FEATURE
+  domainVisionStatement = "Gerencia empréstimos de livros"
+
+  Aggregate Emprestimos {
+    Entity Emprestimo {
+      aggregateRoot
+      Long id key
+      Long usuarioId
+      String isbnLivro
+      Date dataEmprestimo
+      Date dataDevolucao
+      - Status status
+    }
+
+    Entity Renovacao {
+      Long emprestimoId
+      Date dataRenovacao
+      String motivo
+    }
+
+    ValueObject Status {
+      String codigo
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Adota Pet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+
+    <header class="main-header">
+        <a href="index.html" class="logo">🐾 Adota Pet</a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item">Voltar</a>
+        </nav>
+    </header>
+
+    <main class="login-main">
+        <div class="login-container">
+            <h1 class="login-title">Acesse sua conta</h1>
+            <form id="form-login" class="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="cta-button">Entrar</button>
+            </form>
+            <p class="register-link">Não tem cadastro? <a href="register.html">Crie sua conta aqui</a></p>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById("form-login");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            try {
+                const res = await fetch("/api/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, senha })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem("usuario", JSON.stringify(data.usuario));
+                    alert(`Bem-vindo, ${data.usuario.nome}!`);
+                    window.location.href = "index.html";
+                } else {
+                    alert(data.error || "Erro no login");
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert("Erro ao conectar com o servidor");
+            }
+        });
+    </script>
+</body>
+</html>

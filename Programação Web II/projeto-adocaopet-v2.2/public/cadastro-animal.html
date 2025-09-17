@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Animal - Adota Pet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-page">
+
+    <header class="main-header">
+        <a href="index.html" class="logo">🐾 Adota Pet</a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item">Voltar</a>
+        </nav>
+    </header>
+
+    <main class="register-main">
+        <div class="register-container">
+            <h1 class="register-title">Cadastrar Animal</h1>
+            <form id="form-cadastro-animal" class="register-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nome">Nome do Animal</label>
+                    <input type="text" name="nome" id="nome" placeholder="Nome do animal" required>
+                </div>
+                <div class="form-group">
+                    <label for="especie">Espécie</label>
+                    <input type="text" name="especie" id="especie" placeholder="Ex: Gato, Cachorro" required>
+                </div>
+                <div class="form-group">
+                    <label for="idade">Idade</label>
+                    <input type="number" name="idade" id="idade" placeholder="Idade em anos">
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea name="descricao" id="descricao" placeholder="Fale um pouco sobre o animal..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="file" name="foto" id="foto" accept="image/*" required>
+                </div>
+                <button type="submit" class="cta-button">Cadastrar Animal</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="cadastro-animal.js"></script>
+</body>
+</html>

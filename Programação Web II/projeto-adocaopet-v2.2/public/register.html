@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Adota Pet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="register-page">
+
+    <header class="main-header">
+        <a href="index.html" class="logo">🐾 Adota Pet</a>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item">Voltar</a>
+        </nav>
+    </header>
+
+    <main class="register-main">
+        <div class="register-container">
+            <h1 class="register-title">Crie sua conta</h1>
+            <form id="form-register" class="register-form">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Crie uma senha forte" required>
+                </div>
+                <button type="submit" class="cta-button">Cadastrar</button>
+            </form>
+            <p class="login-link">Já tem login? <a href="login.html">Acesse sua conta aqui</a></p>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById("form-register");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            try {
+                const res = await fetch("/api/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ nome, email, senha, perfil: "usuario" }) // perfil fixo
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    alert("Cadastro realizado com sucesso!");
+                    localStorage.setItem("usuario", JSON.stringify({ id: data.id, nome, email, perfil: "usuario" }));
+                    window.location.href = "index.html"; // volta para a página principal
+                } else {
+                    alert(data.error || "Erro no cadastro");
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert("Erro ao conectar com o servidor");
+            }
+        });
+    </script>
+</body>
+</html>

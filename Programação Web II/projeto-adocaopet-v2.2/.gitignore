@@ -1,0 +1,13 @@
+# Dependências
+node_modules/
+
+# Banco de dados (será recriado automaticamente)
+database.db
+database.sqlite
+
+# Uploads (mantém a pasta vazia no GitHub)
+uploads/*
+!uploads/.gitkeep
+
+# Arquivos de ambiente
+.env

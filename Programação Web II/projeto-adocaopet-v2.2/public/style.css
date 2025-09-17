@@ -1,0 +1,748 @@
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Cores e variáveis */
+:root {
+    --primary-color: #5A67D8; /* Um azul/roxo moderno */
+    --text-color: #2D3748;
+    --light-bg: #F7FAFC;
+    --card-bg: #FFFFFF;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Base */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.main-nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+.nav-toggle {
+    display: none; /* Escondido em desktop */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 80px 40px;
+    gap: 40px;
+}
+
+.hero-text-container {
+    max-width: 500px;
+    text-align: left;
+}
+
+.hero-text-container h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text-container p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #434190;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Seção de Animais */
+.animals-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+/* Cards de animais */
+#animais-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.animal-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.animal-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-info h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.card-info p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #718096;
+}
+
+.card-info .btn-adotar {
+    display: block;
+    width: 80%;
+    margin: 15px auto 0;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.card-info .btn-adotar:hover {
+    background-color: #434190;
+}
+
+/* Footer */
+.main-footer {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--text-color);
+    color: #A0AEC0;
+    font-size: 0.9rem;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero-text-container {
+        text-align: center;
+    }
+
+    .hero-text-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-image-container {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* Página de Login - Estilos Modernos */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--light-bg);
+}
+
+.login-main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.login-form .cta-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.register-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Página de Cadastro - Estilos Modernos */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--light-bg);
+}
+
+.register-main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.register-container {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.register-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.register-form .cta-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.login-link {
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Página de Cadastro de Animal - Estilos Modernos */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--light-bg);
+}
+
+.register-main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.register-container {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.register-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.register-form input[type="text"],
+.register-form input[type="number"],
+.register-form textarea,
+.register-form input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.register-form input:focus,
+.register-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.register-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.register-form .cta-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Ajustes para o novo layout dos cards */
+.animal-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.animal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-container {
+    /* Remove a altura fixa e usa padding-bottom para criar a proporção */
+    width: 100%;
+    padding-bottom: 75%; /* Exemplo: Para uma proporção 4:3. Ajuste se preferir 1:1, 16:9 etc. */
+    position: relative;
+    overflow: hidden; /* Importante para o border-radius */
+    border-top-left-radius: 15px; /* Bordas arredondadas no topo */
+    border-top-right-radius: 15px;
+}
+
+.card-image-container img {
+    position: absolute; /* Permite que ocupe o espaço do padding-bottom */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer, cortando o excesso */
+}
+
+/* O restante do CSS para .card-info e botões permanece o mesmo */
+.card-info {
+    padding: 20px;
+    flex-grow: 1; /* Permite que o card-info use o espaço restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.card-info p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #718096;
+}
+
+.card-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto; /* Empurra os botões para o final do card-info */
+    justify-content: center; /* Centraliza os botões */
+    margin-top: 15px;
+}
+
+.btn-adotar-card,
+.btn-editar-card,
+.btn-apagar-card {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-adotar-card {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-adotar-card:hover {
+    background-color: #434190;
+}
+
+.btn-adotar-card[disabled] {
+    background-color: #A0AEC0;
+    cursor: not-allowed;
+}
+
+.btn-editar-card {
+    background-color: #ED8936;
+    color: white;
+}
+
+.btn-editar-card:hover {
+    background-color: #DD6B20;
+}
+
+.btn-apagar-card {
+    background-color: #F56565;
+    color: white;
+}
+
+.btn-apagar-card:hover {
+    background-color: #E53E3E;
+}
+
+/* --- Seção Como Adotar --- */
+.how-to-adopt-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.step-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    max-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+/* --- Seção Por que Adotar --- */
+.why-adopt-section {
+    background-color: #E2E8F0;
+    padding: 60px 20px;
+}
+
+.why-adopt-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.why-adopt-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.why-adopt-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+}
+
+.why-adopt-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.why-adopt-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.why-adopt-text p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.quote {
+    font-style: italic;
+    color: #718096;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+/* --- Seção de Chamada para Ação --- */
+.call-to-action-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-content .cta-button {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.cta-content .cta-button:hover {
+    background-color: #E2E8F0;
+    color: var(--primary-color);
+}
