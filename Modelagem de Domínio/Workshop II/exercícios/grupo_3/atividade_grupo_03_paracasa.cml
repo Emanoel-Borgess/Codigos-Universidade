@@ -1,0 +1,96 @@
+
+// CONTEXT MAP
+ContextMap {
+  contains VendasCentralContext, FaturamentoServicoContext, EntregaLogisticaContext
+  VendasCentralContext [U, OHS] -> [D] FaturamentoServicoContext
+  VendasCentralContext [U, OHS] -> [D] EntregaLogisticaContext
+  FaturamentoServicoContext <-> EntregaLogisticaContext [SW]
+}
+
+// BOUNDED CONTEXT: VENDAS (Orquestrador)
+BoundedContext VendasCentralContext {
+  Aggregate Pedido {
+    Entity Pedido {
+      aggregateRoot
+      String pedidoId
+      String clienteId
+      - List<Item> itens
+      - StatusCicloDeVida status
+    }
+
+    ValueObject Item {
+      String produtoId
+      String descricao
+      int quantidade
+      double precoUnitario
+    }
+
+    ValueObject StatusCicloDeVida {
+      String statusPagamento
+      String statusEntrega
+    }
+
+    DomainEvent PedidoCriado
+    DomainEvent PagamentoProcessadoRecebido
+    DomainEvent EnvioDespachadoRecebido
+  }
+}
+
+// BOUNDED CONTEXT: FATURAMENTO
+BoundedContext FaturamentoServicoContext {
+  Aggregate Fatura {
+    Entity Fatura {
+      aggregateRoot
+      String faturaId
+      String pedidoId
+      double valor
+      Date dataVencimento
+      String status
+    }
+  }
+
+  Aggregate Pagamento {
+    Entity Pagamento {
+      aggregateRoot
+      String pagamentoId
+      String faturaId
+      - MeioDePagamento meioDePagamento
+      String status
+    }
+    
+    ValueObject MeioDePagamento {
+        String tipo
+        String dados
+    }
+
+    DomainEvent PagamentoProcessado
+  }
+}
+
+// BOUNDED CONTEXT: ENTREGA
+BoundedContext EntregaLogisticaContext {
+  Aggregate Envio {
+    Entity Envio {
+      aggregateRoot
+      String envioId
+      String pedidoId
+      - EnderecoDestinatario destinatario
+      - List<Volume> volumes
+    }
+
+    Entity Volume {
+        String volumeId
+        String codigoRastreio
+        - List<String> produtoIdsContidos
+    }
+
+    ValueObject EnderecoDestinatario {
+      String nome
+      String rua
+      String cidade
+      String cep
+    }
+
+    DomainEvent EnvioDespachado
+  }
+}
