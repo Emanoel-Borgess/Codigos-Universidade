@@ -1,14 +1,12 @@
 # Relatório de Atividades: Modelagem de Domínio e DDD - Emanoel R. Borges
 
-Este documento contém as anotações e soluções para todas as atividades propostas na disciplina, cobrindo os tópicos de Modelagem de Domínio, Domain-Driven Design (DDD) Estratégico e Tático.
+Este documento contém as anotações e soluções para todas as atividades propostas na disciplina.
 
-- **Relatório Completo com todas as respostas:** [Acesse o Relatório Completo aqui](RELATORIO_COMPLETO.md)
-- **Link para o Vídeo de Apresentação:** [Assistir no YouTube/Drive](COLE_SEU_LINK_AQUI)
 ## Tabela de Autoavaliação
 
 | Aula                                                 | Atividade                               | Auto-avaliação (0-5) | Justificativa                                                                        | Data/Hora completada     | Link para o registro da atividade no repositório                                               |
 | :--------------------------------------------------- | :-------------------------------------- | :------------------: | :----------------------------------------------------------------------------------- | :----------------------- | :--------------------------------------------------------------------------------------------- |
-| **Aula 1.1** | Introdução à Modelagem de Domínio       |           5          | Todas as 16 questões foram respondidas, cobrindo os conceitos iniciais de modelagem. | 17/06/2025 - 19h       | [Ver Respostas da Aula 1.1](RELATORIO_COMPLETO.md#aula-11-introdução-à-modelagem-de-domínio)   |
+| **Aula 1.1** | Introdução à Modelagem de Domínio       |           5          | Todas as 16 questões foram respondidas, cobrindo os conceitos iniciais de modelagem. | 17/06/2025 - 19h       | [Ver Respostas da Aula 1.1](#aula-11-introducao-a-modelagem-de-dominio)   |
 | **Aula 1.2** | Modelos Mentais e Conhecimento          |           5          | Todas as 17 questões foram completadas, incluindo as reflexões sobre Netflix e Uber. | 26/06/2025 - 19h       | [Ver Respostas da Aula 1.2](RELATORIO_COMPLETO.md#aula-12-modelos-mentais-e-conhecimento-compartilhado) |
 | **Aula 1.3** | Histórico e Evolução                    |           5          | Respondi às 4 questões, realizando a pesquisa sobre a evolução das técnicas.         | 29/06/2025 - 19h       | [Ver Respostas da Aula 1.3](RELATORIO_COMPLETO.md#aula-13-histórico-e-evolução-das-técnicas-de-modelagem) |
 | **Aula 2.1** | Introdução ao DDD                       |           4          | Concluí 22 de 25 questões (88%). A reflexão sobre o "Estudo de Caso Scrum" foi mais desafiadora. | 15/07/2025 - 19h       | [Ver Respostas da Aula 2.1](RELATORIO_COMPLETO.md#aula-21-introdução-ao-projeto-orientado-pelo-domínio-ddd) |
