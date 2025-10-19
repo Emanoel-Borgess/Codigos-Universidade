@@ -4,16 +4,16 @@ Este documento contém as anotações e soluções para todas as atividades prop
 
 ## Tabela de Autoavaliação
 
-| Aula                                                 | Atividade                               | Auto-avaliação (0-5) | Justificativa                                                                        | Data/Hora completada     | Link para o registro da atividade no repositório                                               |
+| Aula                                                 | Atividade                               | Auto-avaliação (0-5) | Justificativa                                                                        | Data/Hora completada     |                                              |
 | :--------------------------------------------------- | :-------------------------------------- | :------------------: | :----------------------------------------------------------------------------------- | :----------------------- | :--------------------------------------------------------------------------------------------- |
-| **Aula 1.1** | Introdução à Modelagem de Domínio       |           5          | Todas as 16 questões foram respondidas, cobrindo os conceitos iniciais de modelagem. | 17/06/2025 - 19h       | [Ver Respostas da Aula 1.1](RELATORIO_COMPLETO.md#aula-11-introducao-a-modelagem-de-dominio)   |
-| **Aula 1.2** | Modelos Mentais e Conhecimento          |           5          | Todas as 17 questões foram completadas, incluindo as reflexões sobre Netflix e Uber. | 26/06/2025 - 19h       | [Ver Respostas da Aula 1.2](RELATORIO_COMPLETO.md#aula-12-modelos-mentais-e-conhecimento-compartilhado) |
-| **Aula 1.3** | Histórico e Evolução                    |           5          | Respondi às 4 questões, realizando a pesquisa sobre a evolução das técnicas.         | 29/06/2025 - 19h       | [Ver Respostas da Aula 1.3](RELATORIO_COMPLETO.md#aula-13-histórico-e-evolução-das-técnicas-de-modelagem) |
-| **Aula 2.1** | Introdução ao DDD                       |           4          | Concluí 22 de 25 questões (88%). A reflexão sobre o "Estudo de Caso Scrum" foi mais desafiadora. | 15/07/2025 - 19h       | [Ver Respostas da Aula 2.1](RELATORIO_COMPLETO.md#aula-21-introdução-ao-projeto-orientado-pelo-domínio-ddd) |
-| **Aula 4.1** | Contextos Delimitados                   |           5          | Todas as 7 questões sobre subdomínios foram realizadas.                              | 21/07/2025 - 19h       | [Ver Respostas da Aula 4.1](RELATORIO_COMPLETO.md#aula-41-contextos-delimitados)                |
-| **Aula 5.1** | Design Estratégico                      |           3          | Concluí cerca de 60% das atividades. Tive dificuldade com a ferramenta ContextMapper. | 13/08/2025 - 19h       | [Ver Respostas da Aula 5.1](RELATORIO_COMPLETO.md#aula-51-design-estratégico-e-mapeamento-de-contextos) |
-| **Aula 6.1** | Design Tático 1                         |           5          | Implementei todos os 15 exemplos de código para Value Objects, Entidades e Agregados. | 17/09/2025 - 19h       | [Ver Respostas da Aula 6.1](RELATORIO_COMPLETO.md#aula-61-design-tático-e-padrões-de-modelos-de-domínio) |
-| **Aula 6.2** | Design Tático 2                         |           5          | Implementei todos os 13 exemplos de código para Serviços, Eventos, Fábricas, etc.    | 20/09/2025 - 21:00       | [Ver Respostas da Aula 6.2](RELATORIO_COMPLETO.md#aula-62-design-tático-e-padrões-de-modelos-de-domínio-1) |
+| **Aula 1.1** | Introdução à Modelagem de Domínio       |           5          | Todas as 16 questões foram respondidas, cobrindo os conceitos iniciais de modelagem. | 17/06/2025 - 19h       |   |
+| **Aula 1.2** | Modelos Mentais e Conhecimento          |           5          | Todas as 17 questões foram completadas, incluindo as reflexões sobre Netflix e Uber. | 26/06/2025 - 19h       ||
+| **Aula 1.3** | Histórico e Evolução                    |           5          | Respondi às 4 questões, realizando a pesquisa sobre a evolução das técnicas.         | 29/06/2025 - 19h       ||
+| **Aula 2.1** | Introdução ao DDD                       |           4          | Concluí 22 de 25 questões (88%). A reflexão sobre o "Estudo de Caso Scrum" foi mais desafiadora. | 15/07/2025 - 19h       ||
+| **Aula 4.1** | Contextos Delimitados                   |           5          | Todas as 7 questões sobre subdomínios foram realizadas.                              | 21/07/2025 - 19h       |                |
+| **Aula 5.1** | Design Estratégico                      |           3          | Concluí cerca de 60% das atividades. Tive dificuldade com a ferramenta ContextMapper. | 13/08/2025 - 19h       |  |
+| **Aula 6.1** | Design Tático 1                         |           5          | Implementei todos os 15 exemplos de código para Value Objects, Entidades e Agregados. | 17/09/2025 - 19h       | |
+| **Aula 6.2** | Design Tático 2                         |           5          | Implementei todos os 13 exemplos de código para Serviços, Eventos, Fábricas, etc.    | 20/09/2025 - 21:00       | |
 
 ## Aula 1.1: Introdução à Modelagem de Domínio
 
