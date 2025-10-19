@@ -1,0 +1,24 @@
+{
+  "name": "exemplo_seminario_wp2",
+  "version": "1.0.0",
+  "description": "Exemplo de padrão DAO com SQLite para o seminário de Programação para Web II",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [
+    "dao",
+    "sqlite",
+    "javascript",
+    "seminario"
+  ],
+  "author": "Emanoel Borges",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

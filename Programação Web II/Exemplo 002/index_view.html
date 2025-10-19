@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo MVC - Lista de Tarefas</title>
+    <style>
+        body { font-family: sans-serif; }
+        .tarefa { padding: 10px; border-bottom: 1px solid #ccc; }
+        .completa { text-decoration: line-through; color: #888; }
+    </style>
+</head>
+<body>
+    <h1>Minha Lista de Tarefas (MVC)</h1>
+
+    <form id="form-adicionar-tarefa">
+        <input type="text" id="input-tarefa" placeholder="Nova tarefa" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul id="lista-tarefas">
+        </ul>
+
+    <script type="module" src="controller.js"></script>
+</body>
+</html>

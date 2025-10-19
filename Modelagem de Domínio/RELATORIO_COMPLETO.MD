@@ -14,7 +14,8 @@ Este documento contém as anotações e soluções para todas as atividades prop
 | **Aula 2.1** | Introdução ao DDD                       |           4          | Concluí 22 de 25 questões (88%). A reflexão sobre o "Estudo de Caso Scrum" foi mais desafiadora. | 15/07/2025 - 19h       | [Ver Respostas da Aula 2.1](RELATORIO_COMPLETO.md#aula-21-introdução-ao-projeto-orientado-pelo-domínio-ddd) |
 | **Aula 4.1** | Contextos Delimitados                   |           5          | Todas as 7 questões sobre subdomínios foram realizadas.                              | 21/07/2025 - 19h       | [Ver Respostas da Aula 4.1](RELATORIO_COMPLETO.md#aula-41-contextos-delimitados)                |
 | **Aula 5.1** | Design Estratégico                      |           3          | Concluí cerca de 60% das atividades. Tive dificuldade com a ferramenta ContextMapper. | 13/08/2025 - 19h       | [Ver Respostas da Aula 5.1](RELATORIO_COMPLETO.md#aula-51-design-estratégico-e-mapeamento-de-contextos) |
-|
+| **Aula 6.1** | Design Tático 1                         |           5          | Implementei todos os 15 exemplos de código para Value Objects, Entidades e Agregados. | 17/09/2025 - 19h       | [Ver Respostas da Aula 6.1](RELATORIO_COMPLETO.md#aula-61-design-tático-e-padrões-de-modelos-de-domínio) |
+| **Aula 6.2** | Design Tático 2                         |           5          | Implementei todos os 13 exemplos de código para Serviços, Eventos, Fábricas, etc.    | 20/09/2025 - 21:00       | [Ver Respostas da Aula 6.2](RELATORIO_COMPLETO.md#aula-62-design-tático-e-padrões-de-modelos-de-domínio-1) |
 
 ## Aula 1.1: Introdução à Modelagem de Domínio
 
@@ -1069,3 +1070,1024 @@ BoundedContext Hospital_Shared_Kernel {
 * **Minha visão:** O mapa deixa claro: onde a colaboração é intensa e segura, a gente usa um SK. Onde a integração traria mais dor de cabeça do que benefício, a gente opta pelo divórcio amigável do SW.
 
 ---
+## Aula 6.1: Design Tático: As Peças do Quebra-Cabeça
+
+### Categoria: Implementando um Value Object (CPF)
+
+**98. Implemente um CPF como Value Object, considerando a estrutura clássica de classes Java: garantir que os atributos não sejam alterados após a criação do objeto; garantir que haja exatamente 11 digitos.**
+
+```java
+import java.util.Objects;
+
+public final class CPF { // 'final' pra ninguém poder herdar e zoar o barraco
+    private final String numero; // 'final' pra garantir: uma vez criado, não muda mais!
+
+    public CPF(String numero) {
+        // Já chega na porta validando: se não for um CPF de 11 dígitos, nem entra.
+        if (numero == null || !numero.matches("\\d{11}")) {
+            throw new IllegalArgumentException("Opa, um CPF precisa ter 11 números, hein.");
+        }
+        this.numero = numero;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CPF outroCpf = (CPF) o;
+        // O que importa é o valor, não se é o mesmo objeto na memória.
+        return numero.equals(outroCpf.numero);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
+    }
+}
+```
+
+* **Minha visão:** A ideia de um Value Object é tratar um conceito, como o CPF, como se fosse um número ou um texto. Ele não tem uma identidade própria que muda com o tempo, ele *é* o seu valor. A gente "blinda" o objeto pra que ele seja imutável e sempre válido.
+
+**99. Refaça o exemplo usando o recurso de "record".**
+
+```java
+public record CPF(String numero) {
+    // Construtor compacto, só pra botar a validação
+    public CPF {
+        if (numero == null || !numero.matches("\\d{11}")) {
+            throw new IllegalArgumentException("Opa, um CPF precisa ter 11 números, hein.");
+        }
+    }
+}
+```
+* **Minha visão:** Usar record em Java pra fazer Value Object é uma mão na roda. O Java já faz todo o trabalho chato (construtor, getters, equals, hashCode) pra você. Você só precisa se preocupar com a regra de negócio, que no caso é a validação. Fica muito mais limpo!
+
+### Categoria: Mais sobre Objetos de Valor (1)
+
+**100. Implemente CoordenadaGPS (com latitude/longitude) que: valide valores no intervalo (-90 a +90 para latitude e longitude de 0 a 180); implemente distanceTo(CoordenadaGPS outra).**
+
+```java
+import static java.lang.Math.*;
+
+public record CoordenadaGPS(double latitude, double longitude) {
+    public CoordenadaGPS {
+        if (latitude < -90.0 || latitude > 90.0) {
+            throw new IllegalArgumentException("Latitude fora do mapa! Tem que ser de -90 a 90.");
+        }
+        if (longitude < -180.0 || longitude > 180.0) {
+            throw new IllegalArgumentException("Longitude fora do mapa! Tem que ser de -180 a 180.");
+        }
+    }
+
+    public double distanciaAte(CoordenadaGPS outra) {
+        final int RAIO_DA_TERRA_KM = 6371;
+        double latDist = toRadians(outra.latitude - this.latitude);
+        double lonDist = toRadians(outra.longitude - this.longitude);
+        double a = sin(latDist / 2) * sin(latDist / 2) +
+                   cos(toRadians(this.latitude)) * cos(toRadians(outra.latitude)) *
+                   sin(lonDist / 2) * sin(lonDist / 2);
+        double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+        return RAIO_DA_TERRA_KM * c;
+    }
+}
+```
+
+* **Minha visão:** Um bom Value Object não tem só dados, ele tem comportamento que faz sentido pra ele. Em vez de ter uma função `CalculadoraDeDistancia` perdida no código, a própria `CoordenadaGPS` sabe como calcular a distância até outra. O código fica muito mais organizado e fácil de entender.
+
+**101. Crie um Value Object Senha que: exija no mínimo 8 caracteres; armazena apenas o hash da senha.**
+
+```java
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.Base64;
+
+public record Senha(String hash) {
+    private static final int TAMANHO_MINIMO = 8;
+
+    public static Senha of(String senhaPura) {
+        if (senhaPura == null || senhaPura.length() < TAMANHO_MINIMO) {
+            throw new IllegalArgumentException("Senha muito curta, campeão! Mínimo de 8 caracteres.");
+        }
+        String hashGerado = calcularHash(senhaPura);
+        return new Senha(hashGerado);
+    }
+
+    public boolean confere(String senhaPura) {
+        if (senhaPura == null) return false;
+        return this.hash.equals(calcularHash(senhaPura));
+    }
+
+    private static String calcularHash(String texto) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(texto.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(hashBytes);
+        } catch (Exception e) {
+            throw new RuntimeException("Deu ruim pra gerar o hash da senha.", e);
+        }
+    }
+}
+```
+
+* **Minha visão:** Esse é um exemplo animal de como um Value Object pode carregar regras de segurança importantes. O objeto `Senha` garante que a gente *nunca* guarde a senha de verdade no sistema. Ele força a gente a trabalhar sempre do jeito certo e seguro.
+
+**102. Crie um Value Object para E-mail que: não permita emails sem "@"; exija o formato usuario@dominio; permita apenas letras, números, ponto e sublinhado para usuario e dominio.**
+
+```java
+import java.util.regex.Pattern;
+
+public record Email(String endereco) {
+    private static final Pattern PADRAO_EMAIL =
+        Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
+
+    public Email {
+        if (endereco == null || !PADRAO_EMAIL.matcher(endereco).matches()) {
+            throw new IllegalArgumentException("'" + endereco + "' não parece um e-mail válido.");
+        }
+    }
+
+    public String getDominio() {
+        return endereco.substring(endereco.indexOf('@') + 1);
+    }
+
+    public String getUsuario() {
+        return endereco.substring(0, endereco.indexOf('@'));
+    }
+}
+```
+
+* **Minha visão:** É muito melhor ter uma variável `Email email` do que `String email` no seu código. Com o objeto `Email`, você tem a certeza de que ele sempre será válido. E de quebra, ele já te dá uns métodos bacanas como `getDominio()`.
+
+### Categoria: Mais sobre Objetos de Valor (2)
+
+**103. Implemente um Value Object Temperatura com: validação de -273.15°C (zero absoluto) e lançamento de exceção para valores inválidos; conversão com toFahrenheit().**
+
+```java
+public record Temperatura(double celsius) {
+    private static final double ZERO_ABSOLUTO = -273.15;
+
+    public Temperatura {
+        if (celsius < ZERO_ABSOLUTO) {
+            throw new IllegalArgumentException("Eita! Mais frio que o zero absoluto não rola (" + ZERO_ABSOLUTO + "°C).");
+        }
+    }
+
+    public double emFahrenheit() {
+        return (this.celsius * 9.0 / 5.0) + 32;
+    }
+}
+```
+
+* **Minha visão:** O objeto `Temperatura` não é só um número, ele carrega uma regra da física com ele. Ele se protege de valores impossíveis. E o método `emFahrenheit()` mostra que ele entende do seu próprio conceito.
+
+### Categoria: Implementando uma Entidade (Livro)
+
+**104. Implemente uma entidade Livro para um sistema de biblioteca.**
+**105. Considere que o id é definido pelo código ISBN, validado no construtor da classe e lançando um exceção caso o código seja inválido.**
+**106. Implemente a regra que devolva a citação do livro, por padrão, em formato ABNT.**
+
+```java
+import java.util.Objects;
+
+public class Livro {
+    private final String isbn;
+    private String titulo;
+    private String autor;
+    private int anoPublicacao;
+
+    public Livro(String isbn, String titulo, String autor, int anoPublicacao) {
+        if (isbn == null || !(isbn.matches("\\d{10}") || isbn.matches("\\d{13}"))) {
+            throw new IllegalArgumentException("ISBN inválido, parceiro.");
+        }
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public String getCitacaoABNT() {
+        String[] partesAutor = autor.split(" ");
+        String ultimoNome = partesAutor[partesAutor.length - 1].toUpperCase();
+        String nomes = autor.substring(0, autor.lastIndexOf(' '));
+        return String.format("%s, %s. %s. %d.", ultimoNome, nomes, this.titulo, this.anoPublicacao);
+    }
+   
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return isbn.equals(livro.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn);
+    }
+
+    // Getters e Setters
+    public String getIsbn() { return isbn; }
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public String getAutor() { return autor; }
+    public void setAutor(String autor) { this.autor = autor; }
+    public int getAnoPublicacao() { return anoPublicacao; }
+    public void setAnoPublicacao(int anoPublicacao) { this.anoPublicacao = anoPublicacao; }
+}
+```
+
+* **Minha visão:** A grande diferença de uma Entidade pra um Value Object é essa ideia de "identidade". Um `Livro` tem uma história. O título pode ser corrigido, mas o ISBN dele continua o mesmo. Já um `CPF`, se o número mudar, é *outro* CPF, não o mesmo que mudou. É por isso que o `equals` da Entidade só olha pro ID.
+
+### Categoria: Mais sobre Entidades (Reserva e Identificadores)
+
+**107. Implemente uma entidade ReservaHotel com: identidade (UUID); regra: não pode ser cancelada após check-in.**
+
+```java
+import java.time.LocalDate;
+import java.util.UUID;
+import java.util.Objects;
+
+public class ReservaHotel {
+    private final UUID id;
+    private String nomeHospede;
+    private LocalDate dataCheckIn;
+    private LocalDate dataCheckOut;
+    private StatusReserva status;
+
+    public enum StatusReserva { CONFIRMADA, HOSPEDADO, CANCELADA, FINALIZADA }
+
+    public ReservaHotel(String nomeHospede, LocalDate dataCheckIn, LocalDate dataCheckOut) {
+        this.id = UUID.randomUUID();
+        this.nomeHospede = nomeHospede;
+        this.dataCheckIn = dataCheckIn;
+        this.dataCheckOut = dataCheckOut;
+        this.status = StatusReserva.CONFIRMADA;
+    }
+
+    public void fazerCheckIn() {
+        if (this.status != StatusReserva.CONFIRMADA) {
+            throw new IllegalStateException("Ué, não dá pra fazer check-in de uma reserva que não tá confirmada.");
+        }
+        this.status = StatusReserva.HOSPEDADO;
+    }
+
+    public void cancelar() {
+        if (this.status == StatusReserva.HOSPEDADO || this.status == StatusReserva.FINALIZADA) {
+            throw new IllegalStateException("Já era! Não dá pra cancelar depois que o hóspede já entrou.");
+        }
+        this.status = StatusReserva.CANCELADA;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReservaHotel that = (ReservaHotel) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+   
+    // Getters
+    public UUID getId() { return id; }
+    public String getNomeHospede() { return nomeHospede; }
+    public LocalDate getDataCheckIn() { return dataCheckIn; }
+    public LocalDate getDataCheckOut() { return dataCheckOut; }
+    public StatusReserva getStatus() { return status; }
+}
+```
+
+* **Minha visão:** A entidade `ReservaHotel` não é só um monte de dados. Ela é a guardiã do seu próprio ciclo de vida. Você não "seta" o status pra "CANCELADA", você manda uma ordem: `reserva.cancelar()`. E a reserva, que conhece as próprias regras, decide se essa ordem pode ser executada ou não.
+
+**108. No contexto de publicações acadêmicas, científicas e documentos digitais faça uma análise sobre os códigos ISBN, ISSN e DOI. Como eles poderiam ser utilizados na implementação de diferentes entidades? Dê exemplos práticos.**
+
+Esses códigos são como RGs para diferentes tipos de publicações. A gente usaria cada um pra identificar uma entidade diferente:
+
+* **ISBN (International Standard Book Number):** É o RG de **livros**. Cada edição de um livro tem um. Seria o identificador perfeito pra uma entidade `Livro`. `public class Livro { private final ISBN id; ... }`
+* **ISSN (International Standard Serial Number):** É o RG de **publicações em série**, tipo revistas e jornais científicos. Ele identifica a revista como um todo, não uma edição específica. Seria o ID da entidade `Periodico`. `public class Periodico { private final ISSN id; ... }`
+* **DOI (Digital Object Identifier):** É um link permanente, o RG de **qualquer coisa digital**, principalmente artigos científicos. Não importa se a revista mudou de site, o DOI do artigo vai ser sempre o mesmo. Perfeito pra entidade `Artigo`. `public class Artigo { private final DOI id; ... }`
+
+* **Minha visão:** Usar esses identificadores do mundo real é uma ótima! Conecta nosso software diretamente com os conceitos que os especialistas da área (bibliotecários, pesquisadores) já usam.
+
+### Categoria: Implementando um Agregado (Reserva de Passagens)
+
+**109. Implemente um agregado para o contexto de um sistema de reserva de passagens, considerando elementos como Reserva, Voo, Passageiro.**
+**110. Garanta que a reserva de um passageiro só pode ser confirmada se o voo não estiver lotado.**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+// Raiz do Agregado
+public class Voo {
+    private final UUID id;
+    private String codigoVoo;
+    private int capacidade;
+    private final List<Reserva> reservas;
+
+    public Voo(String codigoVoo, int capacidade) {
+        this.id = UUID.randomUUID();
+        this.codigoVoo = codigoVoo;
+        this.capacidade = capacidade;
+        this.reservas = new ArrayList<>();
+    }
+
+    public Reserva criarReservaPara(Passageiro passageiro) {
+        if (reservas.size() >= capacidade) {
+            throw new IllegalStateException("Voo lotado, já era!");
+        }
+        Reserva novaReserva = new Reserva(passageiro, this.id);
+        this.reservas.add(novaReserva);
+        return novaReserva;
+    }
+
+    public void cancelarReserva(UUID reservaId) {
+        reservas.removeIf(reserva -> reserva.getId().equals(reservaId));
+    }
+
+    public List<Reserva> getReservas() {
+        return List.copyOf(reservas); // Retorna cópia para proteger a lista interna
+    }
+   
+    public UUID getId() { return id; }
+}
+
+// Entidade interna
+class Reserva {
+    private final UUID id;
+    private final Passageiro passageiro;
+    private final UUID vooId;
+
+    public Reserva(Passageiro passageiro, UUID vooId) {
+        this.id = UUID.randomUUID();
+        this.passageiro = passageiro;
+        this.vooId = vooId;
+    }
+    public UUID getId() { return id; }
+    public Passageiro getPassageiro() { return passageiro; }
+}
+
+// Value Object
+record Passageiro(String nome, String documento) {}
+```
+
+* **Minha visão:** Pensa no Agregado como uma "gangue". Tem o chefe (a Raiz, no caso, `Voo`) e os membros (as `Reservas`). Ninguém de fora fala direto com os membros, só com o chefe. E o chefe garante que a gangue inteira esteja sempre consistente, protegendo as regras do grupo (como a de não vender mais passagens do que assentos).
+
+### Categoria: Mais sobre Agregados
+
+**111. Implemente um agregado para um sistema bancário onde: Raiz: ContaBancária; Invariante: saldo nunca pode ser negativo. Métodos: depositar(), sacar() (validando saldo).**
+
+```java
+import java.math.BigDecimal;
+import java.util.UUID;
+
+public class ContaBancaria {
+    private final UUID id;
+    private BigDecimal saldo;
+
+    public ContaBancaria() {
+        this.id = UUID.randomUUID();
+        this.saldo = BigDecimal.ZERO;
+    }
+
+    public void depositar(BigDecimal valor) {
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Valor do depósito tem que ser positivo, né.");
+        }
+        this.saldo = this.saldo.add(valor);
+    }
+
+    public void sacar(BigDecimal valor) {
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Valor do saque tem que ser positivo.");
+        }
+        if (this.saldo.compareTo(valor) < 0) {
+            throw new IllegalStateException("Saldo insuficiente. Acontece...");
+        }
+        this.saldo = this.saldo.subtract(valor);
+    }
+
+    public BigDecimal getSaldo() {
+        return saldo;
+    }
+    public UUID getId() { return id; }
+}
+```
+
+* **Minha visão:** A `ContaBancaria` protege o saldo como um leão. Ninguém de fora pode simplesmente fazer `conta.setSaldo(-100)`. A única forma de mexer no saldo é através dos portões de entrada `depositar()` e `sacar()`, e eles são os seguranças que barram qualquer operação inválida.
+
+**112. Implemente um agregado para um sistema de bibliotecas onde: Raiz: Biblioteca; Entidade interna: Livro (não pode ser emprestado diretamente, só pela raiz); Value Object: ISBN (identificador imutável do livro).**
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+// Value Object
+record ISBN(String codigo) {
+    public ISBN {
+        if (codigo == null || !(codigo.matches("\\d{10}") || codigo.matches("\\d{13}"))) {
+            throw new IllegalArgumentException("ISBN inválido.");
+        }
+    }
+}
+
+// Entidade Interna
+class ItemLivro {
+    private final ISBN isbn;
+    private boolean emprestado;
+
+    public ItemLivro(ISBN isbn) { this.isbn = isbn; this.emprestado = false; }
+    public ISBN getIsbn() { return isbn; }
+    boolean isEmprestado() { return emprestado; }
+    void marcarComoEmprestado() { this.emprestado = true; }
+    void marcarComoDevolvido() { this.emprestado = false; }
+}
+
+// Raiz do Agregado
+public class Biblioteca {
+    private final String nome;
+    private final Map<ISBN, ItemLivro> acervo = new HashMap<>();
+
+    public Biblioteca(String nome) { this.nome = nome; }
+
+    public void adicionarLivroAoAcervo(ISBN isbn) {
+        acervo.putIfAbsent(isbn, new ItemLivro(isbn));
+    }
+
+    public void emprestarLivro(ISBN isbn) {
+        ItemLivro livro = Optional.ofNullable(acervo.get(isbn))
+            .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado no acervo."));
+       
+        if (livro.isEmprestado()) {
+            throw new IllegalStateException("Ih, esse livro já está emprestado.");
+        }
+        livro.marcarComoEmprestado();
+    }
+
+    public void devolverLivro(ISBN isbn) {
+        ItemLivro livro = Optional.ofNullable(acervo.get(isbn))
+            .orElseThrow(() -> new IllegalArgumentException("Este livro não parece ser do nosso acervo."));
+       
+        livro.marcarComoDevolvido();
+    }
+}
+```
+
+* **Minha visão:** A `Biblioteca` é a Raiz do Agregado e controla o estado de todos os `ItemLivro` em seu acervo. Não é possível emprestar um `ItemLivro` diretamente. A operação deve passar pelo método `biblioteca.emprestarLivro(isbn)`, que contém as regras de negócio, como verificar se o livro existe e se já não está emprestado. Isso garante a consistência do acervo.
+
+---
+
+## Aula 6.2: Design Tático: Mais Peças do Quebra-Cabeça
+
+### Categoria: Implementando um Serviço (Empréstimo de Livro)
+
+**113. Considere o contexto de um sistema de bibliotecas e implemente: um ServicoEmprestimo que utiliza Livro, Usuario e Emprestimo para efetuar a operação emprestarLivro.**
+**114. Considere que: Um livro só pode ser emprestado se estiver disponível. O usuário deve estar em situação regular para realizar um empréstimo. A data de devolução depende do tipo de usuário. Exceções devem ser lançadas para tentativas de empréstimo com usuário irregular ou livro indisponível.**
+
+```java
+import java.time.LocalDate;
+
+// Supondo a existência dessas classes/records e repositórios
+// public record ISBN(String value) {}
+// public record UsuarioId(UUID value) {}
+// enum TipoUsuario { ALUNO, PROFESSOR }
+// public class Livro { public boolean estaDisponivel() {...} public void marcarComoEmprestado() {...} ... }
+// public class Usuario { public boolean estaRegular() {...} public TipoUsuario getTipo() {...} ... }
+// public class Emprestimo { ... }
+// ... Repositórios ...
+
+public class ServicoEmprestimo {
+    private final LivroRepositorio livroRepo;
+    private final UsuarioRepositorio usuarioRepo;
+    private final EmprestimoRepositorio emprestimoRepo;
+
+    public ServicoEmprestimo(LivroRepositorio lr, UsuarioRepositorio ur, EmprestimoRepositorio er) {
+        this.livroRepo = lr;
+        this.usuarioRepo = ur;
+        this.emprestimoRepo = er;
+    }
+
+    public Emprestimo emprestarLivro(ISBN isbn, UsuarioId usuarioId) {
+        Livro livro = livroRepo.buscarPorIsbn(isbn)
+            .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
+       
+        Usuario usuario = usuarioRepo.buscarPorId(usuarioId)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        if (!livro.estaDisponivel()) {
+            throw new RuntimeException("Livro indisponível");
+        }
+        if (!usuario.estaRegular()) {
+            throw new RuntimeException("Usuário com pendências");
+        }
+
+        LocalDate dataDevolucao = calcularDataDevolucao(usuario.getTipo());
+        livro.marcarComoEmprestado();
+        Emprestimo novoEmprestimo = new Emprestimo(livro.getIsbn(), usuario.getId(), dataDevolucao);
+       
+        livroRepo.salvar(livro);
+        emprestimoRepo.salvar(novoEmprestimo);
+
+        return novoEmprestimo;
+    }
+
+    private LocalDate calcularDataDevolucao(TipoUsuario tipo) {
+        return tipo == TipoUsuario.PROFESSOR ? LocalDate.now().plusDays(30) : LocalDate.now().plusDays(15);
+    }
+}
+```
+
+* **Minha visão:** Um Serviço de Domínio é tipo o "maestro" de uma operação complexa. Ele não tem estado próprio, ele não guarda nenhuma informação. A função dele é pegar vários atores diferentes (agregados, como `Livro` e `Usuario`), coordenar uma ação entre eles que não seria responsabilidade de nenhum deles sozinho, e garantir que a operação aconteça de forma consistente.
+
+### Categoria: Mais sobre Serviços
+
+**115. Implemente um serviço de ConversorMoeda capaz de realizar conversão de valores entre diferentes moedas, baseado em diferentes taxas de câmbio.**
+
+```java
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+interface TaxaCambioProvider {
+    BigDecimal getTaxa(String moedaOrigem, String moedaDestino);
+}
+
+public class ConversorMoeda {
+    private final TaxaCambioProvider taxaProvider;
+
+    public ConversorMoeda(TaxaCambioProvider provider) {
+        this.taxaProvider = provider;
+    }
+
+    public BigDecimal converter(BigDecimal valor, String moedaOrigem, String moedaDestino) {
+        if (moedaOrigem.equalsIgnoreCase(moedaDestino)) {
+            return valor;
+        }
+        BigDecimal taxa = taxaProvider.getTaxa(moedaOrigem, moedaDestino);
+        return valor.multiply(taxa).setScale(2, RoundingMode.HALF_UP);
+    }
+}
+```
+
+* **Minha visão:** A conversão de moeda é um processo, uma ação. Não é uma "coisa" que tem identidade. Por isso, ela se encaixa perfeitamente como um Serviço. Ele simplesmente pega uns dados de entrada (valor, moedas), faz um cálculo (usando taxas que podem vir de outro lugar) e te devolve uma saída, sem guardar nada.
+
+**116. Implemente um serviço de AnaliseCredito que avalia se um empréstimo deve ser concedido a um cliente, considerando seu histórico de compras, dívidas ativas, salário e valor do empréstimo.**
+
+```java
+import java.math.BigDecimal;
+
+// Supondo a existência dessas classes e serviços
+// public class Cliente { ... }
+// public interface ClienteRepositorio { ... }
+// public interface ServicoExternoSerasa { boolean temPendencias(CPF cpf); }
+
+public class AnaliseCredito {
+    private final ClienteRepositorio clienteRepo;
+    private final ServicoExternoSerasa serasaService;
+
+    public AnaliseCredito(ClienteRepositorio clienteRepo, ServicoExternoSerasa serasaService) {
+        this.clienteRepo = clienteRepo;
+        this.serasaService = serasaService;
+    }
+
+    public ResultadoAnalise avaliar(ClienteId clienteId, BigDecimal valorEmprestimo) {
+        Cliente cliente = clienteRepo.buscarPorId(clienteId)
+            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+       
+        if (serasaService.temPendencias(cliente.getCpf())) {
+            return ResultadoAnalise.REPROVADO("Cliente com pendências no Serasa.");
+        }
+
+        BigDecimal parcelaMaxima = cliente.getSalario().multiply(new BigDecimal("0.3"));
+       
+        // Lógica simplificada de cálculo de parcela
+        BigDecimal parcelaEstimada = valorEmprestimo.divide(new BigDecimal("12"), RoundingMode.HALF_UP);
+
+        if (parcelaEstimada.compareTo(parcelaMaxima) > 0) {
+            return ResultadoAnalise.REPROVADO("Valor da parcela excede 30% da renda.");
+        }
+
+        return ResultadoAnalise.APROVADO("Crédito aprovado.");
+    }
+}
+
+record ResultadoAnalise(boolean aprovado, String motivo) {
+    public static ResultadoAnalise APROVADO(String motivo) { return new ResultadoAnalise(true, motivo); }
+    public static ResultadoAnalise REPROVADO(String motivo) { return new ResultadoAnalise(false, motivo); }
+}
+```
+
+* **Minha visão:** A "Análise de Crédito" é uma regra de negócio que é bem mais do que uma soma ou multiplicação. Ela envolve buscar dados de vários lugares (do nosso banco de dados, de um serviço tipo Serasa) e aplicar uma política complexa. Colocar essa lógica num Serviço deixa tudo bem organizado e separado das entidades, que continuam cuidando só dos seus próprios dados e regras simples.
+
+### Categoria: Implementando um Evento (Reserva de Hotel)
+
+**117. Considere o contexto de um sistema de hotel: Implemente um evento representativo para ReservaConfirmada (considerando informações como: identificação da reserva, do cliente, datas de entrada e saída, custo total).**
+**118. Considere ainda um agregado representativo da reserva, contendo uma funcionalidade para gerar a confirmação de reserva.**
+
+```java
+import java.time.Instant;
+import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
+
+// O Evento de Domínio
+public record ReservaConfirmada(
+    UUID eventoId,
+    Instant dataOcorrencia,
+    UUID reservaId,
+    UUID clienteId,
+    LocalDate dataCheckIn,
+    LocalDate dataCheckOut,
+    BigDecimal custoTotal
+) {
+    public ReservaConfirmada(UUID reservaId, UUID clienteId, LocalDate checkIn, LocalDate checkOut, BigDecimal custo) {
+        this(UUID.randomUUID(), Instant.now(), reservaId, clienteId, checkIn, checkOut, custo);
+    }
+}
+
+// O Agregado
+public class Reserva {
+    private final UUID id;
+    private final UUID clienteId;
+    private LocalDate dataCheckIn;
+    private LocalDate dataCheckOut;
+    private BigDecimal custoTotal;
+    private StatusReserva status;
+    private transient final List<Object> domainEvents = new ArrayList<>();
+
+    private enum StatusReserva { PENDENTE, CONFIRMADA, CANCELADA }
+
+    public Reserva(UUID clienteId, LocalDate checkIn, LocalDate checkOut, BigDecimal custo) {
+        this.id = UUID.randomUUID();
+        this.clienteId = clienteId;
+        this.dataCheckIn = checkIn;
+        this.dataCheckOut = checkOut;
+        this.custoTotal = custo;
+        this.status = StatusReserva.PENDENTE;
+    }
+
+    public void confirmar() {
+        if (this.status != StatusReserva.PENDENTE) {
+            throw new IllegalStateException("Apenas reservas pendentes podem ser confirmadas.");
+        }
+        this.status = StatusReserva.CONFIRMADA;
+       
+        ReservaConfirmada evento = new ReservaConfirmada(
+            this.id, this.clienteId, this.dataCheckIn, this.dataCheckOut, this.custoTotal
+        );
+        this.domainEvents.add(evento);
+    }
+
+    public List<Object> getDomainEvents() {
+        return List.copyOf(domainEvents);
+    }
+
+    public void clearDomainEvents() {
+        this.domainEvents.clear();
+    }
+}
+```
+
+* **Minha visão:** Um Evento de Domínio é como uma "notícia de jornal" que o seu sistema publica: "Fiquem sabendo: a reserva XYZ foi confirmada!". É um fato que aconteceu no passado, imutável. Quem gera a notícia é o Agregado (`Reserva`), porque é ele que sabe quando algo importante aconteceu. Depois que a notícia é publicada, outros sistemas interessados (como o de enviar e-mails, ou o financeiro) podem ler e tomar suas próprias ações. Isso desacopla todo mundo!
+
+### Categoria: Mais sobre Evento
+
+**119. Implemente um evento EstoqueAbaixoDoMinimo com os seguintes dados: produtoId, quantidadeAtual, quantidadeMinima. A regra é: Disparar apenas quando quantidadeAtual < quantidadeMinima.**
+
+```java
+import java.time.Instant;
+import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
+
+// O Evento
+public record EstoqueAbaixoDoMinimo(
+    UUID eventoId,
+    Instant dataOcorrencia,
+    UUID produtoId,
+    int quantidadeAtual,
+    int quantidadeMinima
+) {
+    public EstoqueAbaixoDoMinimo(UUID produtoId, int atual, int minima) {
+        this(UUID.randomUUID(), Instant.now(), produtoId, atual, minima);
+    }
+}
+
+// O Agregado
+public class Produto {
+    private final UUID id;
+    private int quantidadeEmEstoque;
+    private final int estoqueMinimo;
+    private transient final List<Object> domainEvents = new ArrayList<>();
+   
+    public Produto(UUID id, int estoqueInicial, int estoqueMinimo) {
+        this.id = id;
+        this.quantidadeEmEstoque = estoqueInicial;
+        this.estoqueMinimo = estoqueMinimo;
+    }
+
+    public void darBaixaEstoque(int quantidade) {
+        if (this.quantidadeEmEstoque < quantidade) {
+            throw new IllegalStateException("Estoque insuficiente.");
+        }
+        int estoqueAnterior = this.quantidadeEmEstoque;
+        this.quantidadeEmEstoque -= quantidade;
+       
+        if (estoqueAnterior >= this.estoqueMinimo && this.quantidadeEmEstoque < this.estoqueMinimo) {
+            EstoqueAbaixoDoMinimo evento = new EstoqueAbaixoDoMinimo(
+                this.id, this.quantidadeEmEstoque, this.estoqueMinimo
+            );
+            this.domainEvents.add(evento);
+        }
+    }
+   
+    public List<Object> getDomainEvents() { return List.copyOf(domainEvents); }
+    public void clearDomainEvents() { this.domainEvents.clear(); }
+}
+```
+
+* **Minha visão:** A sacada aqui é que o evento não deve ser disparado toda vez que o estoque baixa, mas só no momento exato em que ele **cruza a linha** do mínimo. Isso evita um monte de "notícias" repetidas e desnecessárias. A lógica pra decidir se a notícia deve ser gerada ou não fica dentro do guardião daquela informação, o agregado `Produto`.
+
+### Categoria: Implementando uma Fábrica (Folha de Pagamento)
+
+**120. Considere o contexto de um Sistema de RH envolvendo a geração de uma folha de pagamento para um funcionário, com base nas horas trabalhadas, salário base, horas extras e aplicação de impostos.**
+**121. Implemente uma fábrica capaz de gerar folhas de pagamento, parametrizada pelo funcionário e quantidade de horas trabalhadas, considerando também os demais itens citados.**
+
+```java
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.UUID;
+
+// Supondo a existência dessas classes/interfaces
+// public class Funcionario { ... getters para id, salarioBase, valorHora ... }
+// public class FolhaDePagamento { ... }
+// public interface PoliticaDeImpostos { BigDecimal calcular(BigDecimal salarioBruto); }
+
+public class FolhaDePagamentoFactory {
+    private final PoliticaDeImpostos politicaDeImpostos;
+
+    public FolhaDePagamentoFactory(PoliticaDeImpostos politicaDeImpostos) {
+        this.politicaDeImpostos = politicaDeImpostos;
+    }
+
+    public FolhaDePagamento criarPara(Funcionario funcionario, int horasTrabalhadas, int horasExtras) {
+        if (funcionario == null) throw new IllegalArgumentException("Funcionário não pode ser nulo.");
+       
+        BigDecimal salarioBase = funcionario.getSalarioBase();
+        BigDecimal valorHoraExtra = funcionario.getValorHora().multiply(new BigDecimal("1.5"));
+        BigDecimal totalHorasExtras = valorHoraExtra.multiply(new BigDecimal(horasExtras));
+        BigDecimal salarioBruto = salarioBase.add(totalHorasExtras);
+       
+        BigDecimal valorImpostos = politicaDeImpostos.calcular(salarioBruto);
+        BigDecimal salarioLiquido = salarioBruto.subtract(valorImpostos);
+
+        return new FolhaDePagamento(
+            UUID.randomUUID(),
+            funcionario.getId(),
+            LocalDate.now(),
+            salarioBruto,
+            valorImpostos,
+            salarioLiquido
+        );
+    }
+}
+```
+
+* **Minha visão:** Criar uma `FolhaDePagamento` não é só dar um "new". Tem um monte de cálculo e regra envolvida. Uma Factory é como uma "linha de montagem" especializada. Você entrega a matéria-prima (funcionário, horas) e ela te devolve o produto final (a `FolhaDePagamento`) prontinho e validado. Isso limpa o resto do código, que não precisa saber os detalhes da montagem.
+
+### Categoria: Mais sobre Fábricas
+
+**122. Implemente uma NotaFiscalFabrica considerando: Validação: Itens não podem ser vazios. Calcule impostos automaticamente.**
+
+```java
+import java.math.BigDecimal;
+import java.util.List;
+
+// Supondo a existência dessas classes/interfaces
+// public class Cliente { ... }
+// public class ItemNotaFiscal { ... }
+// public class Impostos { ... }
+// public interface ServicoCalculoImposto { Impostos calcularPara(BigDecimal valor, TipoCliente tipo); }
+// public class NotaFiscal { ... }
+
+public class NotaFiscalFactory {
+    private final ServicoCalculoImposto servicoImposto;
+
+    public NotaFiscalFactory(ServicoCalculoImposto servicoImposto) {
+        this.servicoImposto = servicoImposto;
+    }
+
+    public NotaFiscal criar(Cliente cliente, List<ItemNotaFiscal> itens) {
+        if (cliente == null) {
+            throw new IllegalArgumentException("Cliente é obrigatório.");
+        }
+        if (itens == null || itens.isEmpty()) {
+            throw new IllegalArgumentException("A nota fiscal deve ter pelo menos um item.");
+        }
+
+        BigDecimal valorTotalItens = itens.stream()
+            .map(ItemNotaFiscal::getValorTotal)
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
+       
+        Impostos calculoImpostos = servicoImposto.calcularPara(valorTotalItens, cliente.getTipo());
+
+        return new NotaFiscal(
+            cliente,
+            itens,
+            valorTotalItens,
+            calculoImpostos,
+            valorTotalItens.add(calculoImpostos.getTotal())
+        );
+    }
+}
+```
+
+* **Minha visão:** De novo, a Factory age como um "porteiro" e um "despachante". Primeiro, ela valida se a criação da `NotaFiscal` faz sentido (tem cliente? tem itens?). Se estiver tudo ok, ela faz o trabalho chato de coordenar os cálculos de impostos e só então monta o objeto final, garantindo que ele já nasça consistente.
+
+### Categoria: Implementando um Repositório (Sistema Bancário)
+
+**123. Considere o contexto de um Sistema Bancário contendo um agregado para ContaBancaria.**
+**124. Apresente a implementação de ContaBancariaRepositorio acompanhada de uma implementação de persistência usando Hibernate (ou outro mecanismo de persistência que tenha maior familiaridade), com destaque para uma operação de busca para contas com saldo negativo.**
+
+```java
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+// 1. A Interface do Repositório (no domínio)
+public interface ContaBancariaRepositorio {
+    Optional<ContaBancaria> buscarPorId(UUID id);
+    void salvar(ContaBancaria conta);
+    List<ContaBancaria> buscarContasComSaldoNegativo();
+}
+
+// 2. A Entidade ContaBancaria mapeada com JPA
+@Entity
+class ContaBancaria {
+    @Id
+    private UUID id;
+    private BigDecimal saldo;
+   
+    // Construtor vazio para o JPA
+    protected ContaBancaria() {}
+
+    // Construtor de negócio e métodos...
+    public ContaBancaria(UUID id) {
+        this.id = id;
+        this.saldo = BigDecimal.ZERO;
+    }
+    // ... depositar(), sacar(), etc. ...
+}
+
+// 3. A Implementação do Repositório (na infraestrutura)
+public class ContaBancariaRepositorioJPA implements ContaBancariaRepositorio {
+
+    private final EntityManager entityManager;
+
+    public ContaBancariaRepositorioJPA(EntityManager em) {
+        this.entityManager = em;
+    }
+
+    @Override
+    public Optional<ContaBancaria> buscarPorId(UUID id) {
+        return Optional.ofNullable(entityManager.find(ContaBancaria.class, id));
+    }
+
+    @Override
+    public void salvar(ContaBancaria conta) {
+        entityManager.merge(conta);
+    }
+
+    @Override
+    public List<ContaBancaria> buscarContasComSaldoNegativo() {
+        String jpql = "SELECT c FROM ContaBancaria c WHERE c.saldo < 0";
+        TypedQuery<ContaBancaria> query = entityManager.createQuery(jpql, ContaBancaria.class);
+        return query.getResultList();
+    }
+}
+```
+
+* **Minha visão:** O Repositório é uma das ideias mais geniais do DDD. Ele finge ser uma "coleção de objetos em memória". O seu código de negócio simplesmente fala: `repositorio.salvar(conta)` ou `repositorio.buscarPorId(id)`. Ele não faz ideia se os dados estão indo pra um banco SQL, NoSQL, um arquivo de texto ou pra nuvem. Essa "mentira" desacopla totalmente o seu domínio da infraestrutura, o que é lindo.
+
+### Categoria: Mais sobre Repositório
+
+**125. Implemente ProdutoRepositorio: Interface: List<Produto> buscarPorFaixaDePreco(BigDecimal min, BigDecimal max). Implementação 1: Hibernate com @NamedQuery. Implementação 2: Com recuperação dos objetos de um arquivo onde foram serializados.**
+
+```java
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.persistence.*;
+
+// 1. A Interface do Repositório (no domínio)
+public interface ProdutoRepositorio {
+    Optional<Produto> buscarPorId(UUID id);
+    void salvar(Produto produto);
+    List<Produto> buscarPorFaixaDePreco(BigDecimal min, BigDecimal max);
+}
+
+// A Entidade/Agregado Produto
+@Entity
+@NamedQuery(
+    name = "Produto.buscarPorFaixaDePreco",
+    query = "SELECT p FROM Produto p WHERE p.preco BETWEEN :minPreco AND :maxPreco"
+)
+class Produto implements Serializable {
+    @Id private UUID id;
+    private String nome;
+    private BigDecimal preco;
+    // ... construtores, getters, etc. ...
+}
+
+// 2. Implementação 1: Hibernate com @NamedQuery (na infraestrutura)
+public class ProdutoRepositorioJPA implements ProdutoRepositorio {
+    private final EntityManager em;
+
+    public ProdutoRepositorioJPA(EntityManager em) { this.em = em; }
+
+    @Override
+    public Optional<Produto> buscarPorId(UUID id) {
+        return Optional.ofNullable(em.find(Produto.class, id));
+    }
+
+    @Override
+    public void salvar(Produto produto) {
+        em.merge(produto);
+    }
+
+    @Override
+    public List<Produto> buscarPorFaixaDePreco(BigDecimal min, BigDecimal max) {
+        return em.createNamedQuery("Produto.buscarPorFaixaDePreco", Produto.class)
+                 .setParameter("minPreco", min)
+                 .setParameter("maxPreco", max)
+                 .getResultList();
+    }
+}
+
+// 3. Implementação 2: Arquivo Serializado (na infraestrutura)
+public class ProdutoRepositorioArquivo implements ProdutoRepositorio {
+    private final String caminhoArquivo = "produtos.dat";
+
+    @Override
+    public Optional<Produto> buscarPorId(UUID id) {
+        return lerTodosDoArquivo().stream().filter(p -> p.getId().equals(id)).findFirst();
+    }
+
+    @Override
+    public void salvar(Produto produto) {
+        List<Produto> todos = lerTodosDoArquivo();
+        todos.removeIf(p -> p.getId().equals(produto.getId()));
+        todos.add(produto);
+        escreverTodosNoArquivo(todos);
+    }
+
+    @Override
+    public List<Produto> buscarPorFaixaDePreco(BigDecimal min, BigDecimal max) {
+        return lerTodosDoArquivo().stream()
+            .filter(p -> p.getPreco().compareTo(min) >= 0 && p.getPreco().compareTo(max) <= 0)
+            .collect(Collectors.toList());
+    }
+   
+    private List<Produto> lerTodosDoArquivo() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(caminhoArquivo))) {
+            return (List<Produto>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            return new ArrayList<>();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException("Falha ao ler produtos do arquivo.", e);
+        }
+    }
+   
+    private void escreverTodosNoArquivo(List<Produto> produtos) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(caminhoArquivo))) {
+            oos.writeObject(produtos);
+        } catch (IOException e) {
+            throw new RuntimeException("Falha ao salvar produtos no arquivo.", e);
+        }
+    }
+}
+```
+
+* **Minha visão:** Este exercício mostra o poder do Repositório na prática. A gente tem UMA interface (`ProdutoRepositorio`) e DUAS implementações totalmente diferentes. Uma fala com o banco de dados chique (Hibernate) e a outra salva tudo num arquivo simples. O código de negócio que usa o repositório não muda NADA. Ele continua pedindo `buscarPorFaixaDePreco` e nem sabe da onde os dados estão vindo. Isso é flexibilidade na veia!
+
+---
+* **Aulas 7.1 e 7.2: Arquitetura e Modelos de Domínio (não realizei os exercícios)**
