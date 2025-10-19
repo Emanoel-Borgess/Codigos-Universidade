@@ -4,7 +4,7 @@ Este documento contém as anotações e soluções para todas as atividades prop
 
 ## Tabela de Autoavaliação
 
-| Aula                                                 | Atividade                               | Auto-avaliação (0-5) | Justificativa                                                                        | Data/Hora completada     |
+| Aula                                                 | Atividade                               | Auto-avaliação (0-5) | Justificativa                                                                        | Data/Hora completada     |                                              |
 | :--------------------------------------------------- | :-------------------------------------- | :------------------: | :----------------------------------------------------------------------------------- | :----------------------- | :--------------------------------------------------------------------------------------------- |
 | **Aula 1.1** | Introdução à Modelagem de Domínio       |           5          | Todas as 16 questões foram respondidas, cobrindo os conceitos iniciais de modelagem. | 17/06/2025 - 19h       |
 | **Aula 1.2** | Modelos Mentais e Conhecimento          |           5          | Todas as 17 questões foram completadas, incluindo as reflexões sobre Netflix e Uber. | 26/06/2025 - 19h       |
